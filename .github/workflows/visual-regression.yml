@@ -36,6 +36,8 @@ on:
 
 jobs:
   visual-regression:
+    # Template-maintainer tests: they exercise the demo content removed from this site.
+    if: github.repository == 'alshedivat/al-folio'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:

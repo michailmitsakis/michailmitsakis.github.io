@@ -40,6 +40,8 @@ on:
 
 jobs:
   comments-integration-tests:
+    # Template-maintainer tests: they exercise the demo content removed from this site.
+    if: github.repository == 'alshedivat/al-folio'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎️

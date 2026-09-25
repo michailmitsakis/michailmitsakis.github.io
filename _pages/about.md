@@ -2,18 +2,18 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Motto. Etc.
+subtitle: Materials scientist · green hydrogen, electrochemistry & machine learning for materials discovery · Greece
 
 profile:
   align: right
-  image: prof_pic.jpg
+  image: prof_pic.jpg # replace assets/img/prof_pic.jpg with your own photo (same filename)
   image_circular: false # crops the image to make it circular
   more_info: >
-    <p>555 your office number</p>
-    <p>123 your address street</p>
-    <p>Your City, State 12345</p>
+    <p>MSc Materials Science</p>
+    <p>BSc Physics</p>
+    <p>Greece</p>
 
-selected_papers: true # includes a list of papers marked as "selected={true}"
+selected_papers: false # turn on once _bibliography/papers.bib has entries marked selected={true}
 social: true # includes social icons at the bottom of the page
 
 announcements:
@@ -27,8 +27,15 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](https://www.reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
+I work on **green hydrogen**, trained as a physicist and materials scientist, and I'm increasingly using **machine learning** to decide which experiments are worth running.
 
-Put your address / P.O. box / other info right below your picture. You can also disable any of these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
+My MSc thesis optimised electrodeposition parameters for **hydrogen evolution reaction (HER) catalysts**. The problem I kept running into there — too many candidate conditions and too few experiments to test them — is the thread through everything I've built since.
 
-Link to your social media connections, too. This theme is set up to use [Font Awesome icons](https://fontawesome.com/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
+Today I work at a business and engineering consultancy on **deep-tech and EU-funded programmes**: hydrogen technologies, manufacturing data spaces, and shipyard digitalisation. That means proposal development, technical scoping, and working directly with industrial and research partners.
+
+Alongside that, I build research software for materials discovery:
+
+- **[catalyst-kg-agent](/projects/catalyst-kg-agent/)** — a knowledge-graph-grounded, cost-aware multi-agent system that decides when a cheap database lookup is enough and when an expensive simulation is justified. It combines MACE and CGCNN surrogates with a Materials Project knowledge graph of HER and OER candidates.
+- **[notion-second-brain](/projects/notion-second-brain/)** — a fully local RAG agent with hybrid retrieval, reranking, and an evaluation harness.
+
+I'm looking for an **industrial PhD or a research role in AI for materials science** in Europe. Technical notes are in [writing](/blog/), and everything else is under [projects](/projects/) and my [CV](/cv/).
