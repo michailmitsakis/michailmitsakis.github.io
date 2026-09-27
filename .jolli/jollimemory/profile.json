@@ -1,0 +1,11 @@
+{
+	"manuallyDisabled": false,
+	"cutoverAttemptedAtMs": 1790544014687,
+	"cutoverFence": {
+		"reason": "cutover to sqlite",
+		"at": "2026-09-27T21:20:14.735Z",
+		"tips": {
+			"e:\\Python Projects\\github-pages-portfolio\\michailmitsakis.github.io": "0b7fe869afdb981753b287efa56fc87d1a102f88"
+		}
+	}
+}
