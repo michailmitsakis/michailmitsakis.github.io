@@ -1,0 +1,337 @@
+/*******************************************************************************
+ * Site restyle — "A×C": warm ivory + serif display in light mode,
+ * slate + bright teal in dark mode, bordered cards in both.
+ *
+ * Loaded last from assets/css/main.scss, so everything here wins over the
+ * al_folio_core defaults without copying any of the gem's own partials.
+ * Most of the look comes from the colour tokens in the first two blocks;
+ * the rest only touches typography and a handful of components.
+ ******************************************************************************/
+
+/* ---------------------------------------------------------------------------
+ * Tokens
+ * ------------------------------------------------------------------------- */
+
+:root {
+  --global-bg-color: #faf8f3;
+  --global-code-bg-color: #f0ece3;
+  --global-text-color: #1c1b18;
+  --global-text-color-light: #5c5950;
+  --global-theme-color: #0b6b61;
+  --global-hover-color: #0b6b61;
+  --global-hover-text-color: #ffffff;
+  --global-footer-bg-color: #faf8f3;
+  --global-footer-text-color: #5c5950;
+  --global-footer-link-color: #0b6b61;
+  --global-divider-color: #e5e0d5;
+  --global-card-bg-color: #ffffff;
+
+  --site-accent-soft: #e3efeb;
+  --site-chip: #f0ece3;
+  --site-card-hover-shadow: 0 8px 22px rgba(28, 27, 24, 0.08);
+
+  --font-display: "Newsreader", Georgia, "Times New Roman", serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+
+html[data-theme="dark"] {
+  --global-bg-color: #0f1418;
+  --global-code-bg-color: #1b242c;
+  --global-text-color: #e8e5de;
+  --global-text-color-light: #a1a9b1;
+  --global-theme-color: #5fd4c2;
+  --global-hover-color: #5fd4c2;
+  --global-hover-text-color: #0f1418;
+  --global-footer-bg-color: #0f1418;
+  --global-footer-text-color: #a1a9b1;
+  --global-footer-link-color: #5fd4c2;
+  --global-divider-color: #26303a;
+  --global-card-bg-color: #161d23;
+
+  --site-accent-soft: #15302c;
+  --site-chip: #1b242c;
+  --site-card-hover-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+/* ---------------------------------------------------------------------------
+ * Typography
+ * ------------------------------------------------------------------------- */
+
+body {
+  font-family: var(--font-body);
+  font-weight: 400;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.005em;
+}
+
+strong,
+b {
+  font-weight: 600;
+}
+
+code,
+pre,
+kbd {
+  font-family: var(--font-mono);
+}
+
+article p,
+article li {
+  line-height: 1.75;
+}
+
+// Page header: name on the about page, page titles elsewhere.
+.post-header {
+  padding-bottom: 1.5rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--global-divider-color);
+
+  .post-title {
+    font-family: var(--font-display);
+    font-size: 3.1rem;
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+
+    .font-weight-bold {
+      font-weight: 600 !important;
+    }
+  }
+
+  .desc,
+  .post-description {
+    color: var(--global-text-color-light);
+    font-size: 1rem;
+    margin-bottom: 0;
+  }
+}
+
+// Section labels on the about page (news, latest posts, selected publications):
+// small monospace caps with a hairline, instead of full-size headings.
+.post > article > h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin-top: 2.75rem;
+  margin-bottom: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  a {
+    color: var(--global-theme-color) !important;
+  }
+
+  &::after {
+    content: "";
+    flex: 1 1 auto;
+    height: 1px;
+    background: var(--global-divider-color);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+ * Navbar and footer
+ * ------------------------------------------------------------------------- */
+
+.navbar {
+  opacity: 1;
+  background-color: var(--global-bg-color);
+
+  .navbar-brand.title {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 400 !important;
+
+    .font-weight-bold {
+      font-weight: 600 !important;
+    }
+  }
+}
+
+.navbar.navbar-light .navbar-nav .nav-item .nav-link {
+  font-size: 0.95rem;
+}
+
+.navbar.navbar-light .navbar-nav .nav-item.active > .nav-link {
+  font-weight: 500;
+  box-shadow: inset 0 -2px 0 var(--global-theme-color);
+}
+
+footer.fixed-bottom {
+  border-top: 1px solid var(--global-divider-color);
+}
+
+/* ---------------------------------------------------------------------------
+ * About page: profile, news, social icons
+ * ------------------------------------------------------------------------- */
+
+.profile {
+  img {
+    border-radius: 10px;
+  }
+
+  .more-info {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--global-text-color-light);
+    text-align: center;
+
+    p {
+      display: block;
+      color: inherit;
+    }
+  }
+}
+
+.news table {
+  th,
+  td {
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem;
+    border-bottom: 1px solid var(--global-divider-color);
+  }
+
+  th {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--global-text-color-light);
+    white-space: nowrap;
+    padding-top: 0.85rem;
+  }
+}
+
+.social {
+  margin-top: 3rem;
+
+  .contact-icons {
+    font-size: 1.35rem;
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.9rem;
+      height: 2.9rem;
+      margin: 0 0.3rem 0.75rem;
+      border: 1px solid var(--global-divider-color);
+      border-radius: 10px;
+      transition:
+        border-color 0.2s ease,
+        color 0.2s ease;
+
+      &:hover {
+        border-color: var(--global-theme-color);
+      }
+
+      img,
+      svg {
+        width: 1.35rem;
+        height: 1.35rem;
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .contact-note {
+    font-size: 0.9rem;
+    color: var(--global-text-color-light);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+ * Cards (projects, CV, repositories)
+ * ------------------------------------------------------------------------- */
+
+.card {
+  border: 1px solid var(--global-divider-color);
+  border-radius: 10px;
+  box-shadow: none;
+  overflow: hidden;
+
+  .card-text {
+    color: var(--global-text-color-light);
+  }
+}
+
+.hoverable:hover {
+  transform: translateY(-2px);
+  border-color: var(--global-theme-color);
+  box-shadow: var(--site-card-hover-shadow);
+}
+
+.projects {
+  h2.category {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-align: left;
+    color: var(--global-theme-color);
+    border-bottom: 1px solid var(--global-divider-color);
+    padding-bottom: 0.5rem;
+  }
+
+  .card-img-top {
+    border-bottom: 1px solid var(--global-divider-color);
+    background: #ffffff;
+  }
+
+  .card-title {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 500;
+  }
+
+  .card-text {
+    font-size: 0.9rem;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+ * CV page
+ * ------------------------------------------------------------------------- */
+
+.cv {
+  .card {
+    box-shadow: none;
+
+    .card-title {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      font-weight: 500;
+    }
+
+    .list-group-item .badge {
+      color: var(--global-theme-color) !important;
+      background-color: var(--site-accent-soft) !important;
+      font-family: var(--font-mono);
+      font-weight: 500 !important;
+      text-transform: none !important;
+      letter-spacing: 0;
+      padding: 0.4em 0.65em;
+      border-radius: 6px;
+    }
+
+    .title {
+      font-family: var(--font-body);
+      font-size: 1.02rem;
+    }
+  }
+}
+
+#toc-sidebar .toc-link {
+  font-size: 0.85rem;
+}
