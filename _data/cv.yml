@@ -14,29 +14,29 @@ cv:
   social_networks:
     - network: GitHub
       username: michailmitsakis
-    # - network: LinkedIn
-    #   username: YOUR-LINKEDIN-HANDLE
+    - network: LinkedIn
+      username: michail-mitsakis
 
   sections:
     Education:
-      - institution: "[UNIVERSITY]"
+      - institution: "[Technical University of Denmark (DTU)]"
         area: Materials Science
         degree: MSc
-        date: "[START – END]"
+        date: "[2021 – 2023]"
         highlights:
           - "Thesis: optimisation of electrodeposition parameters for hydrogen evolution reaction (HER) catalysts."
           - "Specialisation: electrochemistry and green hydrogen."
 
-      - institution: "[UNIVERSITY]"
+      - institution: "[National and Kapodistrian University of Athens (NKUA)]"
         area: Physics
         degree: BSc
-        date: "[START – END]"
+        date: "[2015 – 2020]"
 
     Experience:
-      - company: "[CONSULTANCY NAME]"
+      - company: "[WMG Sustainable Innnovation]"
         position: "[ROLE TITLE]"
         location: Greece
-        date: "[START] – present"
+        date: "[2024] – present"
         highlights:
           - Client-facing delivery on deep-tech and EU-funded programmes in hydrogen technologies, manufacturing data spaces, and shipyard digitalisation.
           - Proposal development, technical scoping, and meeting preparation with industrial and research partners.
@@ -47,10 +47,28 @@ cv:
         date: "2026"
         summary: Knowledge-graph-grounded, cost-aware multi-agent system for materials-discovery campaigns.
         highlights:
-          - Decides between a knowledge-graph lookup, an MLIP surrogate query (MACE), and an expensive simulated experiment under an explicit budget.
+          - Decides between a knowledge-graph lookup, an MLIP surrogate query (MACE), and an expensive simulated experiment under an explicit budget, as in a self-driving-lab workflow.
           - Materials Project knowledge graph of 189 HER/OER-relevant materials; zero-shot MACE reaches 0.114 eV/atom MAE on non-oxides.
           - CGCNN baseline evaluated with composition-disjoint cross-validation to control polymorph leakage.
           - "Stack: PyTorch Geometric, MACE, BoTorch/Ax, pydantic-ai, Ollama, NetworkX, MLflow."
+
+      - name: CaMEL-RAG — LLM Hackathon for Materials Science & Chemistry
+        url: https://github.com/michailmitsakis/CaMEL-RAG
+        date: "2025"
+        summary: Retrieval-augmented LLM for natural-language queries over Open Catalyst adsorption-energy data (team Code4Catalysis-KFUPM).
+        highlights:
+          - FAISS vector store over sentence-transformer embeddings; answers cite the retrieved records they are grounded in.
+          - Returned stored DFT adsorption energies exactly on 500 in-index test queries (R² = 1.00), validating retrieval and grounding.
+          - "Stack: Python, FAISS, sentence-transformers, OpenAI API."
+
+      - name: BayBE one more time — Bayesian Optimization Hackathon for Chemistry and Materials
+        url: https://github.com/michailmitsakis/baybe_project-surface-science-syndicate
+        date: "2024"
+        summary: Bayesian optimisation with BayBE to screen small-molecule corrosion inhibitors for aluminium alloys (team Surface Science Syndicate).
+        highlights:
+          - Compared one-hot, Mordred, RDKit and Morgan-fingerprint encodings against random search in simulated 50-experiment campaigns (10 Monte Carlo repeats).
+          - Transfer learning from AA1000 data reached ~96% inhibition efficiency on AA2024 by the 12th experiment, versus ~89% after 25 without it.
+          - "Stack: BayBE, RDKit, Mordred, pandas."
 
       - name: notion-second-brain
         url: https://github.com/michailmitsakis/notion-second-brain
@@ -67,16 +85,48 @@ cv:
         highlights:
           - Configurable per-source scraping with seen-item state and bilingual (English/Greek) keyword prioritisation, run weekly on GitHub Actions.
 
+    Publications:
+      - title: "From Knowledge to Action: Outcomes of the 2025 Large Language Model (LLM) Hackathon for Applications in Materials Science and Chemistry"
+        authors:
+          - A. Roy
+          - K. Shen
+          - A. MacBride
+          - "…"
+          - "**M. Mitsakis**"
+          - "… (300+ authors)"
+        journal: arXiv preprint arXiv:2605.03205
+        publisher: arXiv
+        date: 2026-05
+        url: https://arxiv.org/abs/2605.03205
+        summary: Community paper; contributed CaMEL-RAG (team Code4Catalysis-KFUPM).
+
+      - title: Bayesian Optimization Hackathon for Chemistry and Materials
+        authors:
+          - S. Baird
+          - M. Ansari
+          - Z. Afzal
+          - "…"
+          - "**M. Mitsakis**"
+          - "… (125 authors)"
+        journal: ChemRxiv
+        publisher: ChemRxiv
+        date: 2025-06
+        url: https://doi.org/10.26434/chemrxiv-2025-dzh5z
+        summary: Community paper; contributed BayBE corrosion-inhibitor study (team Surface Science Syndicate).
+
     Skills:
       - name: Electrochemistry
-        summary: Electrocatalysis, hydrogen evolution reaction, electrodeposition
-        keywords: Electrocatalysis, hydrogen evolution reaction, electrodeposition
+        summary: Electrocatalysis, hydrogen evolution reaction, electrodeposition, cyclic voltammetry, impedance spectroscopy, ECSA analysis
+        keywords: Electrocatalysis, hydrogen evolution reaction, electrodeposition, cyclic voltammetry, impedance spectroscopy, ECSA analysis
       - name: Machine learning for materials
-        summary: Bayesian optimisation, graph neural networks, machine-learned interatomic potentials (MACE), Materials Project
-        keywords: Bayesian optimisation, graph neural networks, machine-learned interatomic potentials (MACE), Materials Project
+        summary: Bayesian and multi-objective optimisation (BayBE, BoTorch/Ax, Dragonfly), graph neural networks, machine-learned interatomic potentials (MACE), molecular featurisation (RDKit, Mordred), Materials Project, Open Catalyst
+        keywords: Bayesian and multi-objective optimisation (BayBE, BoTorch/Ax, Dragonfly), graph neural networks, machine-learned interatomic potentials (MACE), molecular featurisation (RDKit, Mordred), Materials Project, Open Catalyst
+      - name: LLMs and agents
+        summary: RAG (FAISS, Qdrant, hybrid retrieval, reranking), multi-agent systems (pydantic-ai), local inference (Ollama), evaluation harnesses
+        keywords: RAG (FAISS, Qdrant, hybrid retrieval, reranking), multi-agent systems (pydantic-ai), local inference (Ollama), evaluation harnesses
       - name: Software
-        summary: Python, PyTorch Geometric, BoTorch/Ax, pydantic-ai, LLM agents, RAG, MLflow, Docker, GitHub Actions
-        keywords: Python, PyTorch Geometric, BoTorch/Ax, pydantic-ai, LLM agents, RAG, MLflow, Docker, GitHub Actions
+        summary: Python, PyTorch Geometric, pandas, MLflow, Docker, GitHub Actions, Streamlit
+        keywords: Python, PyTorch Geometric, pandas, MLflow, Docker, GitHub Actions, Streamlit
       - name: Project delivery
         summary: EU-funded project proposals, technical scoping, consortium work
         keywords: EU-funded project proposals, technical scoping, consortium work

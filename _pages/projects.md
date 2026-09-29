@@ -5,7 +5,6 @@ permalink: /projects/
 description: Research software, tools, and experimental work — from electrocatalysts to agents.
 nav: true
 nav_order: 1
-display_categories: [research, engineering]
 horizontal: false
 ---
 

@@ -3,8 +3,8 @@
 # for more information, please refer to the documentation of jekyll-socials plugin: https://github.com/george-gca/jekyll-socials
 email: mitsakismichail@gmail.com # your email address
 github_username: michailmitsakis # your GitHub user name
-# linkedin_username: YOUR-LINKEDIN-HANDLE # the part after linkedin.com/in/ — uncomment once filled in
-# orcid_id: 0000-0000-0000-0000 # your ORCID ID
+linkedin_username: michail-mitsakis # the part after linkedin.com/in/ — uncomment once filled in
+orcid_id: 0009-0003-3770-0000 # your ORCID ID
 # scholar_userid: XXXXXXXXXXXX # your Google Scholar ID
 cv_pdf: /assets/rendercv/rendercv_output/Michail_Mitsakis_CV.pdf # path to your CV PDF file
 rss_icon: true # comment this line to hide the RSS icon
