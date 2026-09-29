@@ -1,7 +1,7 @@
 ---
 layout: page
 title: MSc Thesis
-description: MSc thesis — Machine learning-driven optimization of electrodeposited Ni-W electrocatalysts for H2 evolution in alkaline electrolysis cells
+description: Machine learning-driven optimization of electrodeposited Ni-W electrocatalysts for H2 evolution in alkaline electrolysis cells
 importance: 2
 category: work
 permalink: /projects/msc-thesis/
