@@ -1,5 +1,5 @@
-github_users:
-  - michailmitsakis
+# github_users:
+  # - michailmitsakis
 
 repo_description_lines_max: 2
 
@@ -8,6 +8,6 @@ github_repos:
   - michailmitsakis/notion-second-brain
   - michailmitsakis/baybe_project-surface-science-syndicate
   - michailmitsakis/CaMEL-RAG
-  - michailmitsakis/wmg_tender_feed
-  - michailmitsakis/wmg_news_feed
+  # - michailmitsakis/wmg_tender_feed
+  # - michailmitsakis/wmg_news_feed
   - michailmitsakis/Ax_bayes_opt_NiW
