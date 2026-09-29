@@ -19,24 +19,27 @@ cv:
 
   sections:
     Education:
-      - institution: "[Technical University of Denmark (DTU)]"
-        area: Materials Science
+      - institution: "Technical University of Denmark (DTU)"
+        area: Engineering – Physics & Nanotechnology
         degree: MSc
-        date: "[2021 – 2023]"
+        start_date: 2021
+        end_date: 2023
         highlights:
           - "Thesis: optimisation of electrodeposition parameters for hydrogen evolution reaction (HER) catalysts."
           - "Specialisation: electrochemistry and green hydrogen."
 
-      - institution: "[National and Kapodistrian University of Athens (NKUA)]"
+      - institution: "National and Kapodistrian University of Athens (NKUA)"
         area: Physics
         degree: BSc
-        date: "[2015 – 2020]"
+        start_date: 2015
+        end_date: 2020
 
     Experience:
-      - company: "[WMG Sustainable Innnovation]"
-        position: "[Energy Consultant]"
+      - company: "WMG Sustainable Innovation"
+        position: "Energy Consultant"
         location: Greece
-        date: "[2024] – present"
+        start_date: 2024
+        end_date: present
         highlights:
           - Client-facing delivery on deep-tech and EU-funded programmes in hydrogen technologies, manufacturing data spaces, and shipyard digitalisation.
           - Proposal development, technical scoping, and meeting preparation with industrial and research partners.

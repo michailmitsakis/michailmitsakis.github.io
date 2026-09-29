@@ -2,7 +2,8 @@
 layout: page
 title: news-feed
 description: A scheduled news feed for relevant news sources to EU project consulting work.
-importance: 5
+importance: 7
+category: consulting tools
 permalink: /projects/news-feed/
 ---
 

@@ -284,9 +284,15 @@ footer.fixed-bottom {
     padding-bottom: 0.5rem;
   }
 
+  .category { display: none; } 
+  // don't display category labels on the project cards themselves, only in the filter bar
+
   .card-img-top {
     border-bottom: 1px solid var(--global-divider-color);
     background: #ffffff;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    object-position: top;
   }
 
   .card-title {
@@ -334,4 +340,16 @@ footer.fixed-bottom {
 
 #toc-sidebar .toc-link {
   font-size: 0.85rem;
+}
+
+// CV: remove the stray bullet dots and the hairline above each date badge
+.cv .list-group { list-style: none; padding-left: 0; }
+.cv .table-cv td { border-top: 0; padding: 0 0 0.35rem 0; }
+
+// CV page: smaller PDF icon next to the title
+.post-title .fa-file-pdf { font-size: 2.2rem; }
+
+// Phones: the portrait currently fills the whole screen width
+@media (max-width: 575.98px) {
+  .profile.float-right { float: none !important; max-width: 240px; margin: 0 auto 1rem; }
 }

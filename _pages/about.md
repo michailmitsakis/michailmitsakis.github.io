@@ -21,14 +21,12 @@ announcements:
   limit: 5 # leave blank to include all the news in the `_news` folder
 
 latest_posts:
-  enabled: true
+  enabled: false
   scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
   limit: 3 # leave blank to include all the blog posts
 ---
 
 I'm a motivated materials scientist, passionate about decarbonization, sustainable energy solutions and accelerating R&D for low-carbon tech through electrochemistry, Power-to-X and AI/ML for materials discovery & design.
-
-I'm always curious, goal-driven, action-oriented and excel in collaborative environments. Constantly seeking to grow my skillset and contribute to the green transition through my generalist mindset and love for learning and discovery, while finding creative solutions to complex problems.
 
 During my studies, I obtained experience in cleanroom and wetlab experimentation and manufacturing, as well as DFT modelling, chemical descriptors, materials screening and optimization. In particular, during my MSc thesis I optimized electrodeposition parameters for **hydrogen evolution reaction (HER) catalysts**. Specifically, I utilized multi-objective Bayesian Optimization (BO) to maximize the activity and stability of electrodeposited Ni-W (nickel-tungsten) alloys under various pre-cursor concentrations, current densities, temperatures, deposition times and pHs by minimizing their overpotential and overpotential difference (obtained before and after stress-testing the catalysts under various conditions).
 

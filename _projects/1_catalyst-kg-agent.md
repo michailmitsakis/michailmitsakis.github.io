@@ -4,6 +4,7 @@ title: catalyst-kg-agent
 description: Knowledge-graph-grounded, cost-aware multi-agent system for choosing the cheapest sufficient next step in a materials-discovery campaign.
 img: assets/img/projects/catalyst-kg-agent.png
 importance: 1
+category: work
 github: https://github.com/michailmitsakis/catalyst-kg-agent
 permalink: /projects/catalyst-kg-agent/
 ---

@@ -3,6 +3,7 @@ layout: page
 title: MSc Thesis
 description: MSc thesis — Machine learning-driven optimization of electrodeposited Ni-W electrocatalysts for H2 evolution in alkaline electrolysis cells
 importance: 2
+category: work
 permalink: /projects/msc-thesis/
 ---
 
@@ -10,7 +11,7 @@ permalink: /projects/msc-thesis/
 
 **MSc Engineering – Physics & Nanotechnology** · DTU Energy · 2023 · Supervisors: Christodoulos Chatzichristodoulou
 
-Electrodeposition is a cheap, scalable way to make electrocatalysts. The catalyst you get, though, depends on a large set of coupled parameters: bath composition, current density or potential, pulse schedule, temperature, and deposition time. My thesis looked at how to choose those parameters to improve **hydrogen evolution reaction (HER)** performance. Further development continued in this repo **[Ax_bayes_opt_NiW](michailmitsakis/Ax_bayes_opt_NiW)**.
+Electrodeposition is a cheap, scalable way to make electrocatalysts. The performance of the produced catalyst, however, depends on a large set of coupled parameters: bath composition, current density or potential, temperature, and deposition time. My thesis looked at how to choose those parameters to improve **hydrogen evolution reaction (HER)** performance. Further development continued in this repo **[Ax_bayes_opt_NiW](michailmitsakis/Ax_bayes_opt_NiW)**.
 
 ## Approach
 
@@ -26,8 +27,8 @@ Electrodeposition is a cheap, scalable way to make electrocatalysts. The catalys
 - **The gain was due to larger surface area, not better catalytic properties**: intrinsic (ECSA-normalised) activity was mostly lower than Ni foam, so the improvement came mainly from the larger ECSA.
 - **Performance settles**: the overpotential at 50 mA cm⁻² reaches a dynamic steady state after an initial activation or deactivation.
 - **Starting data matters**: The initial cold-start for domain data points is critical but time-consuming to generate. A robust starting dataset is what avoids costly random exploration.
-- **Limitations and budgetary constraints**: The process of electrodepositing new electrodes, testing and characterizing them can take a full-day in the lab (> 9 hours) for 3 samples, restricting the usefulness of such approaches for exploring vast parameter spaces. That said, BO remains the most cost-effective optimization method for limited budgets. 
-  
-## What carried over
+- **Limitations and budgetary constraints**: The process of electrodepositing new electrodes, testing and characterizing them can take a full-day in the lab (> 9 hours) for 3 samples, restricting the usefulness of such approaches for exploring vast parameter spaces. That said, BO remains the most cost-effective optimization method for limited budgets.
 
-Most of my later work grew out of this thesis: I experienced first-hand how painstakingly accurate manual experiments need to be, and as such laborious and expensive, especially under strict budget and time limitations. Therefore, deciding where to query the parameter space next to minimize the number of experiments and achieve the optimal set of parameters is a critical modelling problem. At the same time, the large variance in experimental setups and difficulty of achieving reproducibility in  results is a well-known issue in the field. These factors led me to exploring how materials informatics techniques can accelerate and even automate this process.
+# What carried over
+
+Most of my later work grew out of this thesis: I experienced first-hand how painstakingly accurate manual experiments need to be, and as such laborious and expensive, especially under strict budget and time limitations. Therefore, deciding where to query the parameter space next to minimize the number of experiments and achieve the optimal set of parameters is a critical modelling problem. At the same time, the large variance in experimental setups and difficulty of achieving reproducibility in results is a well-known issue in the field. These factors led me to exploring how materials informatics techniques can accelerate and even automate this process.

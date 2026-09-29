@@ -2,9 +2,10 @@
 layout: page
 title: projects
 permalink: /projects/
-description: Research software, tools, and experimental work — from electrocatalysts to agents.
+description: Research software, tools, and experimental work.
 nav: true
 nav_order: 1
+display_categories: [work, consulting tools]
 horizontal: false
 ---
 
