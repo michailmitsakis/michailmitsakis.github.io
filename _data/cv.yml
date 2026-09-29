@@ -34,7 +34,7 @@ cv:
 
     Experience:
       - company: "[WMG Sustainable Innnovation]"
-        position: "[ROLE TITLE]"
+        position: "[Energy Consultant]"
         location: Greece
         date: "[2024] – present"
         highlights:
@@ -51,6 +51,15 @@ cv:
           - Materials Project knowledge graph of 189 HER/OER-relevant materials; zero-shot MACE reaches 0.114 eV/atom MAE on non-oxides.
           - CGCNN baseline evaluated with composition-disjoint cross-validation to control polymorph leakage.
           - "Stack: PyTorch Geometric, MACE, BoTorch/Ax, pydantic-ai, Ollama, NetworkX, MLflow."
+
+      - name: notion-second-brain
+        url: https://github.com/michailmitsakis/notion-second-brain
+        date: "2026"
+        summary: Fully local retrieval-augmented agent over a personal Notion workspace.
+        highlights:
+          - Hybrid dense + BM25 retrieval with reciprocal-rank fusion and cross-encoder reranking.
+          - Persistent memory, OCR ingestion of PDFs and images, and an anchored-rubric evaluation harness.
+          - "Stack: pydantic-ai, Ollama, Qdrant, Streamlit, Docker."
 
       - name: CaMEL-RAG — LLM Hackathon for Materials Science & Chemistry
         url: https://github.com/michailmitsakis/CaMEL-RAG
@@ -69,21 +78,6 @@ cv:
           - Compared one-hot, Mordred, RDKit and Morgan-fingerprint encodings against random search in simulated 50-experiment campaigns (10 Monte Carlo repeats).
           - Transfer learning from AA1000 data reached ~96% inhibition efficiency on AA2024 by the 12th experiment, versus ~89% after 25 without it.
           - "Stack: BayBE, RDKit, Mordred, pandas."
-
-      - name: notion-second-brain
-        url: https://github.com/michailmitsakis/notion-second-brain
-        date: "2026"
-        summary: Fully local retrieval-augmented agent over a personal Notion workspace.
-        highlights:
-          - Hybrid dense + BM25 retrieval with reciprocal-rank fusion and cross-encoder reranking.
-          - Persistent memory, OCR ingestion of PDFs and images, and an anchored-rubric evaluation harness.
-          - "Stack: pydantic-ai, Ollama, Qdrant, Streamlit, Docker."
-
-      - name: tender-feed
-        date: "2026"
-        summary: Scheduled monitor for public tenders and funding calls with weekly email digests.
-        highlights:
-          - Configurable per-source scraping with seen-item state and bilingual (English/Greek) keyword prioritisation, run weekly on GitHub Actions.
 
     Publications:
       - title: "From Knowledge to Action: Outcomes of the 2025 Large Language Model (LLM) Hackathon for Applications in Materials Science and Chemistry"
