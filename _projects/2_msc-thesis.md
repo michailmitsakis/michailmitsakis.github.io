@@ -11,7 +11,7 @@ permalink: /projects/msc-thesis/
 
 **MSc Engineering – Physics & Nanotechnology** · DTU Energy · 2023 · Supervisors: Christodoulos Chatzichristodoulou
 
-Electrodeposition is a cheap, scalable way to make electrocatalysts. The performance of the produced catalyst, however, depends on a large set of coupled parameters: bath composition, current density or potential, temperature, and deposition time. My thesis looked at how to choose those parameters to improve **hydrogen evolution reaction (HER)** performance. Further development continued in this repo **[Ax_bayes_opt_NiW](michailmitsakis/Ax_bayes_opt_NiW)**.
+Electrodeposition is a cheap, scalable way to make electrocatalysts. The performance of the produced catalyst, however, depends on a large set of coupled parameters: bath composition, current density or potential, temperature, and deposition time. My thesis looked at how to choose those parameters to improve **hydrogen evolution reaction (HER)** performance. Further development continued in this repo **[Ax_bayes_opt_NiW](https://github.com/michailmitsakis/Ax_bayes_opt_NiW)**.
 
 ## Approach
 
