@@ -15,8 +15,8 @@ Finding a good corrosion inhibitor means testing many candidate molecules across
 
 ## Setup
 
-- **Search space:** the inhibitor molecule (as SMILES), exposure time, pH, inhibitor concentration and salt concentration, with inhibition efficiency as the target to maximise.
-- **Molecular encodings compared:** one-hot, Mordred descriptors, RDKit descriptors and Morgan fingerprints, each against a random-sampling baseline. This tests whether telling the optimiser something about chemistry actually helps.
+- **Search space:** the inhibitor molecule (as SMILES), exposure time, pH, inhibitor concentration and salt concentration, with inhibition efficiency as the target to maximize.
+- **Molecular encodings compared:** one-hot, Mordred descriptors, RDKit descriptors and Morgan fingerprints, each against a random-sampling baseline. This tests whether telling the optimizer something about chemistry actually helps.
 - **Protocol:** simulated campaigns against the measured data, with 50 experiments each, one experiment per round, and 10 Monte Carlo repetitions.
 - **Transfer learning:** a campaign on AA2024 seeded with prior data from AA1000, using BayBE's task parameters, compared with a campaign starting from scratch.
 
@@ -34,11 +34,11 @@ Finding a good corrosion inhibitor means testing many candidate molecules across
 
 ## What we found
 
-- On AA2024, every strategy reached near-maximal efficiency within roughly 20 experiments, **including random sampling**. That says as much about the dataset, which contains many strong inhibitors, as about the optimiser. Morgan fingerprints were the slowest to get going.
+- On AA2024, every strategy reached near-maximal efficiency within roughly 20 experiments, **including random sampling**. That says as much about the dataset, which contains many strong inhibitors, as about the optimizer. Morgan fingerprints were the slowest to get going.
 - **Transfer learning paid off.** Seeding the AA2024 campaign with AA1000 data reached about 96% efficiency by the 12th experiment. The fresh campaign was still at about 89% after 25.
-- The main lesson: benchmark against random sampling, and pick datasets where the optimum is actually hard to find. Otherwise an easy benchmark can make any optimiser look good.
+- The main lesson: benchmark against random sampling, and pick datasets where the optimum is actually hard to find. Otherwise an easy benchmark can make any optimizer look good.
 
-The hackathon's outcomes, including this project, are summarised in the [event paper on ChemRxiv](https://doi.org/10.26434/chemrxiv-2025-dzh5z).
+The hackathon's outcomes, including this project, are summarized in the [event paper on ChemRxiv](https://doi.org/10.26434/chemrxiv-2025-dzh5z).
 
 **Stack:** BayBE · RDKit · Mordred · pandas · Jupyter
 

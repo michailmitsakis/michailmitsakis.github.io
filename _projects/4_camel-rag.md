@@ -43,6 +43,6 @@ Catalyst-screening datasets such as Open Catalyst hold millions of DFT results, 
 
 On 500 test queries, the returned adsorption energies matched the DFT values exactly (R² = 1.00). These queries ask about records that are **in the index**, so the test shows that retrieval and grounding work: the model reports the stored number instead of making one up. It does **not** show that the model can predict energies for systems it hasn't seen. The obvious next step is an evaluation on held-out and near-duplicate queries, and detecting out-of-distribution requests.
 
-The hackathon's outcomes, including this project, are summarised in the [event paper on arXiv](https://arxiv.org/abs/2605.03205).
+The hackathon's outcomes, including this project, are summarized in the [event paper on arXiv](https://arxiv.org/abs/2605.03205).
 
 **Stack:** Python · FAISS · sentence-transformers · OpenAI API · pandas · Jupyter

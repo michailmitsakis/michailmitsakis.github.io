@@ -2,10 +2,20 @@
 layout: page
 title: tender-feed
 description: A scheduled monitor for public tenders and funding calls, with keyword prioritisation and weekly email digests.
+img: assets/img/projects/tender-watch.png
 importance: 6
 category: consulting tools
 permalink: /projects/tender-feed/
 ---
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="lazy" path="assets/img/projects/tender-watch.png" class="img-fluid rounded z-depth-1" zoomable=true %}
+    </div>
+</div>
+<div class="caption">
+    A weekly digest email: new tenders grouped by source, with energy and decarbonisation matches ranked first.
+</div>
 
 A tool built for my consulting work. It watches the announcement pages of public tenders and funding calls, including energy utilities, development banks, EU agencies, and several Interreg programmes. Once a week it emails a digest of new items.
 

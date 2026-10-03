@@ -3,9 +3,19 @@ layout: page
 title: news-feed
 description: A scheduled news feed for relevant news sources to EU project consulting work.
 importance: 7
+img: assets/img/projects/news-feed.png
 category: consulting tools
 permalink: /projects/news-feed/
 ---
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="lazy" path="assets/img/projects/news-feed.png" class="img-fluid rounded z-depth-1" zoomable=true %}
+    </div>
+</div>
+<div class="caption">
+    The Notion database the feed populates: one entry per article, with source, date, relevance score and an automatic summary.
+</div>
 
 A tool built for my consulting work. It is an automated Python script that collects, prioritizes, and publishes energy & maritime news articles from multiple sources into a Notion database. Tracking renewable energy, hydrogen, maritime decarbonization, and related topics.
 

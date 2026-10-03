@@ -6,5 +6,6 @@ github_username: michailmitsakis # your GitHub user name
 linkedin_username: michail-mitsakis # the part after linkedin.com/in/ — uncomment once filled in
 orcid_id: 0009-0003-3770-0000 # your ORCID ID
 # scholar_userid: XXXXXXXXXXXX # your Google Scholar ID
-cv_pdf: /assets/rendercv/rendercv_output/Michail_Mitsakis_CV.pdf # path to your CV PDF file
+cv_pdf: /assets/pdf/Michail_Mitsakis_CV.pdf # path to your CV PDF file --> MANUAL
+# /assets/rendercv/rendercv_output/Michail_Mitsakis_CV.pdf --> generated from _data/cv.yml by the "Render a CV" workflow
 rss_icon: true # comment this line to hide the RSS icon

@@ -11,7 +11,7 @@ permalink: /projects/notion-second-brain/
 
 **Code:** [github.com/michailmitsakis/notion-second-brain](https://github.com/michailmitsakis/notion-second-brain)
 
-I keep my notes and research in Notion. I wanted to summarise and query them without sending them to a cloud API, so I built a complete retrieval-augmented generation stack that runs entirely on one machine.
+I keep my notes and research in Notion. I wanted to summarize and query them without sending them to a cloud API, so I built a complete retrieval-augmented generation stack that runs entirely on one machine.
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
