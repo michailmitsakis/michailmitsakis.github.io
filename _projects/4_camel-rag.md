@@ -17,7 +17,7 @@ Catalyst-screening datasets such as Open Catalyst hold millions of DFT results, 
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/projects/camel-rag-workflow.jpg" title="CaMEL-RAG workflow" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/projects/camel-rag-workflow.jpg" title="CaMEL-RAG workflow" class="img-fluid rounded z-depth-1" zoomable=true %}
     </div>
 </div>
 <div class="caption">
@@ -39,7 +39,7 @@ Catalyst-screening datasets such as Open Catalyst hold millions of DFT results, 
     500 test queries: the adsorption energies returned by CaMEL-RAG against the DFT values in the index.
 </div>
 
-## Results, read carefully
+## Results
 
 On 500 test queries, the returned adsorption energies matched the DFT values exactly (R² = 1.00). These queries ask about records that are **in the index**, so the test shows that retrieval and grounding work: the model reports the stored number instead of making one up. It does **not** show that the model can predict energies for systems it hasn't seen. The obvious next step is an evaluation on held-out and near-duplicate queries, and detecting out-of-distribution requests.
 

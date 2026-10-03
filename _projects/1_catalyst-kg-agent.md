@@ -32,7 +32,7 @@ A **Scribe** writes predictions back into the graph, so later campaigns start fr
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/projects/catalyst-kg-agent.png" title="MACE vs CGCNN parity plots" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/projects/catalyst-kg-agent.png" title="MACE vs CGCNN parity plots" class="img-fluid rounded z-depth-1" zoomable=true %}
     </div>
 </div>
 <div class="caption">

@@ -14,13 +14,6 @@ permalink: /projects/msc-thesis/
 
 Electrodeposition is a cheap, scalable way to make electrocatalysts. The performance of the produced catalyst, however, depends on a large set of coupled parameters: bath composition, current density or potential, deposition time and pH. My thesis explored how to choose those parameters to improve **hydrogen evolution reaction (HER)** performance. Further development continued in this repo **[Ax_bayes_opt_NiW](https://github.com/michailmitsakis/Ax_bayes_opt_NiW)**.
 
----
-…
-img: assets/img/projects/thesis-loop.png
----
-
-[intro paragraph]
-
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
         {% include figure.liquid loading="eager" path="assets/img/projects/thesis-bo-loop.png" alt="Closed-loop Bayesian optimisation workflow" class="img-fluid rounded z-depth-1" zoomable=true %}
@@ -68,6 +61,6 @@ After the thesis I rebuilt the same loop in [Ax](https://ax.dev/), with qNEHVI p
     Hypervolume after each experiment in the same demonstration run. Both BO batches extend the front beyond the best initial result. Placeholder values.
 </div>
 
-# What carried over
+## What carried over
 
 Most of my later work grew out of this thesis: I experienced first-hand how painstakingly accurate manual experiments need to be, and as such laborious and expensive, especially under strict budget and time limitations. Therefore, deciding where to query the parameter space next to minimize the number of experiments and achieve the optimal set of parameters is a critical problem. At the same time, the large variance in experimental setups and difficulty of achieving reproducibility is a well-known in the field. These factors led me to exploring how materials informatics techniques can accelerate and even automate this process.
