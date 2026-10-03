@@ -32,7 +32,7 @@ Catalyst-screening datasets such as Open Catalyst hold millions of DFT results, 
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/projects/camel-rag-parity.png" title="CaMEL-RAG vs DFT adsorption energies" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/projects/camel-rag-parity.png" title="CaMEL-RAG vs DFT adsorption energies" class="img-fluid rounded z-depth-1" zoomable=true %}
     </div>
 </div>
 <div class="caption">

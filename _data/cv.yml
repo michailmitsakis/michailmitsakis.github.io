@@ -1,14 +1,6 @@
-# Single source for both the /cv/ page and the PDF (rendered by the "Render a CV"
-# GitHub Action with RenderCV). Keep to RenderCV's schema — unknown top-level
-# fields under `cv:` (e.g. label, summary, address) make the PDF build fail.
-# Docs: https://docs.rendercv.com/user_guide/yaml_input_structure/cv/
-#
-# `date:` accepts free text, so bracketed placeholders are safe here. When you
-# have exact dates, you can switch to `start_date: 2023-09` / `end_date: present`.
----
 cv:
   name: Michail Mitsakis
-  location: Greece
+  location: Athens, Greece
   email: mitsakismichail@gmail.com
   website: https://michailmitsakis.github.io
   social_networks:
@@ -16,114 +8,175 @@ cv:
       username: michailmitsakis
     - network: LinkedIn
       username: michail-mitsakis
+    - network: ORCID
+      username: 0009-0003-3770-0000
 
   sections:
+    Experience:
+      - company: WMG Sustainable Innovation
+        position: Junior Business Consultant, Energy
+        location: Greece
+        start_date: 2024-11
+        end_date: present
+        highlights:
+          - "**EU R&I proposals:** co-authored 15 proposals (5 Horizon Europe, 8 CEF, 2 Digital Europe) on maritime transport, liquid hydrogen, carbon-capture membranes and data spaces, translating early-stage innovation concepts into actionable workplans. Built a >€10M lump-sum budget (rates benchmarked on EC data, depreciation, cost justification)."
+          - "**Feasibility analyses:** delivered techno-economic feasibility studies, a CEF cost-benefit analysis and market-mapping reports; prepared business models and IPR-strategy considerations for project portfolios valued at >€10M, such as hydrogen-retrofit carrier and liquid-hydrogen cargo-containment Horizon projects."
+          - "**Project management:** executed reporting for Clean Hydrogen JU flagships EPHYRA (50 MW electrolyser) and TRIERES (Greece's first Hydrogen Valley), >€35M combined."
+          - "**Data spaces & knowledge graphs:** co-authored 2 deliverables for the UNDERPIN data space on Digital Product Passports; drafting a paper mapping software properties and dependencies to semantic ontologies for knowledge-graph interoperability."
+
+      - company: Hellenic Air Force Academy
+        position: Personnel Officer
+        location: Greece
+        start_date: 2023
+        end_date: 2024
+        summary: Mandatory military service.
+
     Education:
-      - institution: "Technical University of Denmark (DTU)"
-        area: Engineering – Physics & Nanotechnology
+      - institution: Technical University of Denmark (DTU)
+        area: Engineering – Physics and Nanotechnology
         degree: MSc
+        location: Denmark
         start_date: 2021
         end_date: 2023
         highlights:
-          - "Thesis: optimisation of electrodeposition parameters for hydrogen evolution reaction (HER) catalysts."
-          - "Specialisation: electrochemistry and green hydrogen."
+          - "**Thesis (DTU Energy):** *Machine learning-driven optimization of electrodeposited Ni-W electrocatalysts for H₂ evolution in alkaline electrolysis.*"
+          - Built a multi-objective Bayesian-optimization loop over 4 electrodeposition parameters, optimizing catalyst activity and stability by minimizing the electrode overpotential and its change after stress testing; characterized ~30 electrodes.
 
-      - institution: "National and Kapodistrian University of Athens (NKUA)"
+      - institution: National and Kapodistrian University of Athens (NKUA)
         area: Physics
         degree: BSc
+        location: Greece
         start_date: 2015
         end_date: 2020
-
-    Experience:
-      - company: "WMG Sustainable Innovation"
-        position: "Energy Consultant"
-        location: Greece
-        start_date: 2024
-        end_date: present
         highlights:
-          - Client-facing delivery on deep-tech and EU-funded programmes in hydrogen technologies, manufacturing data spaces, and shipyard digitalisation.
-          - Proposal development, technical scoping, and meeting preparation with industrial and research partners.
+          - '**Thesis (NCSR "Demokritos"):** *CO₂ sorption and permeability in supported single-walled carbon-nanotube membranes.*'
 
     Projects:
       - name: catalyst-kg-agent
         url: https://github.com/michailmitsakis/catalyst-kg-agent
         date: "2026"
-        summary: Knowledge-graph-grounded, cost-aware multi-agent system for materials-discovery campaigns.
-        highlights:
-          - Decides between a knowledge-graph lookup, an MLIP surrogate query (MACE), and an expensive simulated experiment under an explicit budget, as in a self-driving-lab workflow.
-          - Materials Project knowledge graph of 189 HER/OER-relevant materials; zero-shot MACE reaches 0.114 eV/atom MAE on non-oxides.
-          - CGCNN baseline evaluated with composition-disjoint cross-validation to control polymorph leakage.
-          - "Stack: PyTorch Geometric, MACE, BoTorch/Ax, pydantic-ai, Ollama, NetworkX, MLflow."
+        summary: Knowledge-graph-grounded multi-agent system for HER catalyst screening under a fixed budget. It decides the cheapest next step (KG lookup, MACE/CGCNN surrogate or expensive verification) using Materials Project data.
 
       - name: notion-second-brain
         url: https://github.com/michailmitsakis/notion-second-brain
         date: "2026"
-        summary: Fully local retrieval-augmented agent over a personal Notion workspace.
-        highlights:
-          - Hybrid dense + BM25 retrieval with reciprocal-rank fusion and cross-encoder reranking.
-          - Persistent memory, OCR ingestion of PDFs and images, and an anchored-rubric evaluation harness.
-          - "Stack: pydantic-ai, Ollama, Qdrant, Streamlit, Docker."
+        summary: A fully local RAG agent answering queries on my Notion notes; OCR ingestion, hybrid retrieval, cross-encoder reranking, Qdrant DB and a rubric-based eval harness.
 
-      - name: CaMEL-RAG — LLM Hackathon for Materials Science & Chemistry
-        url: https://github.com/michailmitsakis/CaMEL-RAG
-        date: "2025"
-        summary: Retrieval-augmented LLM for natural-language queries over Open Catalyst adsorption-energy data (team Code4Catalysis-KFUPM).
-        highlights:
-          - FAISS vector store over sentence-transformer embeddings; answers cite the retrieved records they are grounded in.
-          - Returned stored DFT adsorption energies exactly on 500 in-index test queries (R² = 1.00), validating retrieval and grounding.
-          - "Stack: Python, FAISS, sentence-transformers, OpenAI API."
+      - name: Materials design with ML & AI, DTU
+        summary: Gaussian-process prediction of elastic moduli for 3,858 2D materials. Team ranked 3rd of 14 in the course's Kaggle competition.
 
-      - name: BayBE one more time — Bayesian Optimization Hackathon for Chemistry and Materials
-        url: https://github.com/michailmitsakis/baybe_project-surface-science-syndicate
-        date: "2024"
-        summary: Bayesian optimisation with BayBE to screen small-molecule corrosion inhibitors for aluminium alloys (team Surface Science Syndicate).
-        highlights:
-          - Compared one-hot, Mordred, RDKit and Morgan-fingerprint encodings against random search in simulated 50-experiment campaigns (10 Monte Carlo repeats).
-          - Transfer learning from AA1000 data reached ~96% inhibition efficiency on AA2024 by the 12th experiment, versus ~89% after 25 without it.
-          - "Stack: BayBE, RDKit, Mordred, pandas."
+      - name: Engineering covalently bonded 2D layered materials by self-intercalation for the HER, DTU
+        summary: "DFT study of 5 TaS₂ (TMD) bilayers, 0–100% intercalated, for HER. S-on-top was the strongest H-binding site; 75% intercalation as a stability–activity compromise: H binding −2.14 eV, near-zero H₂ binding (spontaneous desorption), moderate stability."
+
+      - name: 3D Pyrolytic Carbon-Gold Electrodes, DTU Nanolab
+        summary: Team-based cleanroom work operating multiple experimental setups (spin-coating, baking, development, lithography, pyrolysis, deposition, optical microscopy, SEM, stylus profilometry) towards maximizing the energy efficiency of electrodes for energy-harvesting applications.
+
+      - name: CO₂ electrolysis to formate, DTU Physics
+        summary: Investigation of formate utilization in improving fuel-cell energy efficiency. Measured crossover across multiple membranes and electrolytes in H-cell and MEA configurations (CV, HPLC, GC).
+
+      - name: X-Tech Entrepreneurship, DTU
+        summary: R&D expert in a startup developing an electrochemical sensor of micro-organic particles towards minimizing crop-yield losses. Cleanroom work, market analysis, progress reports and deliverables under strict deadlines.
+
+      - name: Green fuels & Power-to-X, DTU
+        summary: Feasibility study on the optimized production of e-methanol as a maritime fuel, modelled in Aspen Plus.
 
     Publications:
       - title: "From Knowledge to Action: Outcomes of the 2025 Large Language Model (LLM) Hackathon for Applications in Materials Science and Chemistry"
         authors:
           - A. Roy
-          - K. Shen
-          - A. MacBride
           - "…"
           - "**M. Mitsakis**"
-          - "… (300+ authors)"
+          - et al.
         journal: arXiv preprint arXiv:2605.03205
         publisher: arXiv
         date: 2026-05
         url: https://arxiv.org/abs/2605.03205
-        summary: Community paper; contributed CaMEL-RAG (team Code4Catalysis-KFUPM).
+        summary: "CaMEL-RAG (5-person team): a citation-grounded RAG over Open Catalyst adsorption energies that returned the exact DFT value for all 500 in-index test queries."
 
       - title: Bayesian Optimization Hackathon for Chemistry and Materials
         authors:
           - S. Baird
-          - M. Ansari
-          - Z. Afzal
           - "…"
           - "**M. Mitsakis**"
-          - "… (125 authors)"
+          - et al.
         journal: ChemRxiv
         publisher: ChemRxiv
         date: 2025-06
         url: https://doi.org/10.26434/chemrxiv-2025-dzh5z
-        summary: Community paper; contributed BayBE corrosion-inhibitor study (team Surface Science Syndicate).
+        summary: "**3rd place** (4-person team). BayBE screening of corrosion inhibitors across 6 aluminium alloys, comparing 4 molecular encodings. Transfer learning reached ~96% inhibition efficiency in 12 experiments, vs ~89% after 25 from scratch."
 
     Skills:
-      - name: Electrochemistry
-        summary: Electrocatalysis, hydrogen evolution reaction, electrodeposition, cyclic voltammetry, impedance spectroscopy, ECSA analysis
-        keywords: Electrocatalysis, hydrogen evolution reaction, electrodeposition, cyclic voltammetry, impedance spectroscopy, ECSA analysis
-      - name: Machine learning for materials
-        summary: Bayesian and multi-objective optimisation (BayBE, BoTorch/Ax, Dragonfly), graph neural networks, machine-learned interatomic potentials (MACE), molecular featurisation (RDKit, Mordred), Materials Project, Open Catalyst
-        keywords: Bayesian and multi-objective optimisation (BayBE, BoTorch/Ax, Dragonfly), graph neural networks, machine-learned interatomic potentials (MACE), molecular featurisation (RDKit, Mordred), Materials Project, Open Catalyst
-      - name: LLMs and agents
-        summary: RAG (FAISS, Qdrant, hybrid retrieval, reranking), multi-agent systems (pydantic-ai), local inference (Ollama), evaluation harnesses
-        keywords: RAG (FAISS, Qdrant, hybrid retrieval, reranking), multi-agent systems (pydantic-ai), local inference (Ollama), evaluation harnesses
-      - name: Software
-        summary: Python, PyTorch Geometric, pandas, MLflow, Docker, GitHub Actions, Streamlit
-        keywords: Python, PyTorch Geometric, pandas, MLflow, Docker, GitHub Actions, Streamlit
-      - name: Project delivery
-        summary: EU-funded project proposals, technical scoping, consortium work
-        keywords: EU-funded project proposals, technical scoping, consortium work
+      - name: Core
+        summary: Cross-functional collaboration, project & conflict management, systems thinking, adaptability, technical writing
+        keywords: Cross-functional collaboration, project & conflict management, systems thinking, adaptability, technical writing
+      - name: Materials informatics
+        summary: Python, PyTorch, Bayesian optimization (BoTorch/Ax, BayBE, Dragonfly), DFT (ASE, GPAW), MLIPs
+        keywords: Python, PyTorch, Bayesian optimization (BoTorch/Ax, BayBE, Dragonfly), DFT (ASE, GPAW), MLIPs
+      - name: Lab techniques
+        summary: Electrodeposition, CP, CV, EIS, HPLC, GC, cleanroom nanofabrication (spin-coating, baking, development, lithography, pyrolysis, CVD, optical microscopy, SEM, stylus profilometry)
+        keywords: Electrodeposition, CP, CV, EIS, HPLC, GC, cleanroom nanofabrication (spin-coating, baking, development, lithography, pyrolysis, CVD, optical microscopy, SEM, stylus profilometry)
+      - name: Agentic AI
+        summary: Local RAG, LLM-as-a-judge, MCP, observability (Arize, MLflow)
+        keywords: Local RAG, LLM-as-a-judge, MCP, observability (Arize, MLflow)
+
+    Certificates:
+      - name: AI Agents Mastery
+        issuer: Arize AI
+        date: "2026"
+      - name: Agentic AI MOOC
+        issuer: UC Berkeley
+        date: "2026"
+      - name: LLM Zoomcamp
+        issuer: DataTalksClub
+        date: "2025"
+      - name: MCP Course
+        issuer: Hugging Face
+        date: "2025"
+      - name: Hydrogen Production
+        issuer: IFP School
+        date: "2024"
+      - name: Climate Change AI Summer School
+        issuer: Climate Change AI
+        date: 2023, 2024
+
+    Courses:
+      - label: AI for Experimental Chemistry (2026)
+        details: Washington University, CHEM 5080
+      - label: Chemical Data Science (2026)
+        details: Rutgers University – The Sun Lab, CHEM 487-542
+      - label: AI Agents for Science (2025)
+        details: UChicago, CMSC 35370
+      - label: Intro to Deep Learning (2025)
+        details: MIT, 6.S191
+      - label: AI in the Sciences and Engineering (2024)
+        details: CAMLab, ETH Zürich
+      - label: AI for Chemistry (2023)
+        details: EPFL – Schwaller Group, CH-457
+      - label: "Deep Generative Models: Probabilistic Foundations and Learning Algorithms (2023)"
+        details: Cornell, Stanford, UCLA, Caltech joint course, CS 236
+      - label: Practical Deep Learning for Coders, Part 1
+        details: fast.ai
+
+    Languages:
+      - name: Greek
+        summary: Native
+      - name: English
+        summary: C2 (IELTS, 2021)
+      - name: French
+        summary: B2
+      - name: German
+        summary: B2
+
+    Interests:
+      - name: Reading
+        summary: Fantasy, sci-fi, philosophy, science, history
+        keywords: Fantasy, sci-fi, philosophy, science, history
+      - name: Ideas
+        summary: Writing, philosophy of mind, ontologies of quantum mechanics
+        keywords: Writing, philosophy of mind, ontologies of quantum mechanics
+      - name: Music
+        summary: Rock, punk, psychedelic, funk, jazz, blues, indie
+        keywords: Rock, punk, psychedelic, funk, jazz, blues, indie
+      - name: Sport
+        summary: Calisthenics
+        keywords: Calisthenics
