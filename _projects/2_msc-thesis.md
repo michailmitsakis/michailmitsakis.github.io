@@ -74,7 +74,7 @@ with illustrative values only to demonstrate the loop, and they appear only in t
     </div>
 </div>
 <div class="caption">
-    The 10 lab measurements (blue), the two that form the measured Pareto front (circled), and the Pareto front the model predicts from them (purple, with 95% intervals on both objectives). Dashed lines are the objective thresholds.
+    The 10 lab measurements (blue), the two that form the measured Pareto front (circled), and the Pareto front the model predicts from them (purple, with 95% intervals on both objectives). Grey lines are the objective thresholds; hollow points miss one of them, and the shaded area is the hypervolume.
 </div>
 
 ### Results so far
@@ -101,7 +101,7 @@ with illustrative values only to demonstrate the loop, and they appear only in t
     </div>
 </div>
 <div class="caption">
-    What the overpotential model has learned. Left: total-order Sobol indices; current density explains most of the predicted variation, then deposition time and pH. Right: predicted overpotential over current density and pH, other parameters held at the best measured recipe; crosses mark tested recipes.
+    What the overpotential model has learned. Left: total-order Sobol indices; current density explains most of the predicted variation, then deposition time and pH. Right: predicted overpotential over current density and pH, other parameters held at the best measured recipe (trial 4, diamond). Circles mark tested recipes; the orange star and outline mark the predicted best region.
 </div>
 
 The model gives tungstate concentration almost no weight. That sits awkwardly next to the thesis finding that the best electrodes used 0.1 M, but six of these
@@ -113,7 +113,7 @@ The model gives tungstate concentration almost no weight. That sits awkwardly ne
     </div>
 </div>
 <div class="caption">
-    Hypervolume (the area the measured Pareto front dominates, relative to the thresholds) after each trial. Trials 0–9 are lab measurements; trials 10–15 (shaded, dashed) are recipes Ax actually suggested, completed with illustrative values to show what a few rounds look like.
+    Hypervolume (the area the measured Pareto front dominates, relative to the thresholds) after each trial. Trials 0–9 are lab measurements; trials 10–15 (orange and green bands, dashed line) are recipes Ax actually suggested, completed with illustrative values to show what a few rounds look like.
 </div>
 
 **Stack:** Ax 1.3 · BoTorch · BayBE · Dragonfly (thesis) · pandas · matplotlib · pytest
