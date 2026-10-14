@@ -13,10 +13,10 @@ permalink: /projects/msc-thesis/
 
 **MSc Engineering – Physics & Nanotechnology** · DTU Energy · 2023 · Supervisors: Christodoulos Chatzichristodoulou
 
-**Code:** [github.com/michailmitsakis/Ax_bayes_opt_NiW](https://github.com/michailmitsakis/Ax_bayes_opt_NiW) · **Status:** thesis complete; Ax workflow working, next batch not yet measured
+**Code:** [github.com/michailmitsakis/Ax_bayes_opt_NiW](https://github.com/michailmitsakis/Ax_bayes_opt_NiW) · 
 
 Electrodeposition is a cheap, scalable way to make electrocatalysts. The performance of the produced catalyst, however, depends on a large set of coupled
-parameters: bath composition, current density, deposition time and pH. My thesis explored how to choose those parameters to improve **hydrogen evolution
+parameters: bath composition, current density, deposition time and temperature. My thesis explored how to choose those parameters to improve **hydrogen evolution
 reaction (HER)** performance, using multi-objective Bayesian optimization (BO) to trade off activity against stability. After graduating I rebuilt the same
 loop in [Ax](https://ax.dev/), described [below](#rebuilding-the-workflow-in-ax).
 
@@ -26,7 +26,7 @@ loop in [Ax](https://ax.dev/), described [below](#rebuilding-the-workflow-in-ax)
     </div>
 </div>
 <div class="caption">
-    The closed loop used in the thesis: deposit a batch of Ni-W electrodes, measure activity and stability, refit one Gaussian process per objective, and let a multi-objective acquisition function choose the next recipes. About 30 electrodes were made over the thesis.
+    The closed loop used in the thesis: deposit a batch of Ni-W electrodes, measure activity and stability, refit one Gaussian process per objective, and let a multi-objective acquisition function choose the next recipes. About 30 electrodes were made over the thesis. Note: In the thesis the four parameters were tungstate concentration, current density, deposition time and temperature, with pH fixed at ~9. The Ax rebuild swapped temperature for pH, as shown.
 </div>
 
 ## Approach
@@ -38,7 +38,7 @@ loop in [Ax](https://ax.dev/), described [below](#rebuilding-the-workflow-in-ax)
 - Conducted data analysis and visualization.
 - Applied and customized the open source BO library [Dragonfly](https://github.com/dragonfly/dragonfly/) to optimize the electrodeposition parameters for
   optimal catalyst activity and stability, with the goal of significantly reducing the number of manual lab experiments required.
-- Kept the search space to four parameters (tungstate concentration, current density, deposition time, pH). Temperature was dropped after it showed large
+- Kept the search space to four parameters (tungstate concentration, current density, deposition time, temperature). For this repo, temperature was dropped after it showed large
   systematic errors between measurements, which would only have confused the optimizer.
 
 ## Thesis findings
@@ -63,6 +63,7 @@ and recipes without results stay pending so Ax does not propose them twice.
 | Overpotential slope (drift over CV cycling) | maximize; ≥ 0 means stable | −0.001    |
 
 The search space is tungstate concentration (0.05–0.20 M), current density (5–125 mA/cm²), deposition time (60–600 s) and pH (5–10 in steps of 0.5).
+Because the thesis data showed large systematic temperature errors, the rebuild replaces temperature with pH as the fourth parameter.
 Ax fits one Gaussian process per objective and picks each batch with qLogNEHVI, which favours recipes likely to push the Pareto front past the thresholds.
 
 **About the data.** The analysis below uses 10 lab measurements as the initial design. Ax has since suggested two batches; those six recipes were completed
