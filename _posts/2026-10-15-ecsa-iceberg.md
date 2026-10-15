@@ -2,14 +2,15 @@
 layout: post
 title: The ECSA Iceberg
 date: 2026-10-15 10:00:00+0300
-description: What I measured as "electrochemically active surface area" in my MSc thesis and why the area you divide by can change the story a catalyst tells.
+description: What I measured as ‘electrochemically active surface area’ in my MSc thesis, and why the area you divide by can change the story a catalyst tells.
 tags: electrochemistry electrocatalysis hydrogen EIS bayesian-optimization
 categories: technical
 giscus_comments: false
 related_posts: false
 toc:
   sidebar: left
-# thumbnail: assets/img/posts/ecsa/thumb.png
+og_image: https://michailmitsakis.github.io/assets/img/posts/ecsa/eis-nyquist-primer.png
+thumbnail: assets/img/posts/ecsa/eis-nyquist-primer.png
 ---
 
 Electrochemistry is complicated. It gets more complicated the deeper you get into it. The more you learn, the more it feels like there is a massive iceberg of details hidden from view. As with all disciplines, you hopefully reach a point where you come closer to knowing how much you don't know. This post is about one tip of that iceberg: the **electrochemically active surface area (ECSA)**. In my MSc thesis at DTU I measured it, divided by it, and built my main conclusion on it. Three years on, I understand much better what that single number represents. Below: what I did, how a new study used the same idea, what a recent perspective paper says is hiding underneath, and what I'd do differently now.
@@ -44,7 +45,7 @@ The overpotential is the extra potential beyond equilibrium needed to run a reac
   </div>
 </div>
 <div class="caption">
-  Left: a schematic CV (cyclic voltammogram) with the non-Faradaic window marked; the only current there is double-layer charging. Right: inner and outer Helmholtz planes and the diffuse layer. Redrawn after Figs 1-11 and 1-12 of my MSc thesis <a href="#ref-1">[1]</a>, which were adapted from <a href="#ref-13">[13]</a> and <a href="#ref-14">[14]</a>.
+  Fig 1. Left: a schematic CV (cyclic voltammogram) with the non-Faradaic window marked; the only current there is double-layer charging. Right: inner and outer Helmholtz planes and the diffuse layer. Redrawn after corresponding figures of my MSc thesis <a href="#ref-1">[1]</a>, which were adapted from <a href="#ref-13">[13]</a> and <a href="#ref-14">[14]</a>.
 </div>
 
 **The measurement.** So how do you measure the ECSA? More real surface means more capacitance. So, divide the measured double-layer capacitance by the capacitance of an ideally flat surface of the same material, or the *specific capacitance* $$C_s$$, and you get: 
@@ -55,11 +56,16 @@ The real $$C_s$$ is typically unknown, so common practice is to borrow a literat
 
 **Measuring $$C_{\text{DL}}$$.** There are two standard routes. One is to run CVs at several scan rates inside the non-Faradaic window and take the slope of charging current against scan rate, $$i_c = C_{\text{DL}}\,\nu$$ [[7]](#ref-7). The other is electrochemical impedance spectroscopy (EIS). I went with EIS, mainly for speed, which matters when every sample sits inside an optimization loop.
 
-**EIS in 90 seconds.** A CV sweeps the potential and watches the current. EIS instead holds the electrode at a fixed DC operating point and adds a small wiggle on top: a sinusoidal voltage of typically 5–10 mV (potentiostatic) or a small AC current (galvanostatic). The response is recorded one frequency at a time, usually from about 100 kHz down into the mHz range. The ratio of the two sine waves (their amplitude ratio and phase shift) is the impedance, $$Z(\omega) = Z' + jZ''$$, where $$j$$ is the imaginary unit, not a current density.
+<details markdown="1">
+<summary><strong>EIS in 90 seconds</strong> (click to expand)</summary>
+
+**EIS explained, briefly.** A CV sweeps the potential and watches the current. EIS instead holds the electrode at a fixed DC operating point and adds a small wiggle on top: a sinusoidal voltage of typically 5–10 mV (potentiostatic) or a small AC current (galvanostatic). The response is recorded one frequency at a time, usually from about 100 kHz down into the mHz range. The ratio of the two sine waves (their amplitude ratio and phase shift) is the impedance, $$Z(\omega) = Z' + jZ''$$, where $$j$$ is the imaginary unit, not a current density.
 
 The payoff is separation. Every process at the interface has its own time constant, $$\tau = RC$$. Fast processes, like ions moving through the electrolyte, respond at high frequencies; slower ones, like charge transfer, adsorption and diffusion, respond at low frequencies. One frequency sweep pulls apart what a CV smears together. The fine print: this only works if the system responds linearly (hence the small amplitude), stays stable for the whole sweep, and responds only to the perturbation. A Kramers–Kronig test checks this before you fit anything. For any linear, stable, causal system, the real and imaginary parts of the impedance are mathematically linked, so each can be calculated from the other; if the measured parts disagree, something went wrong during the measurement. In practice, software fits the spectrum with a long chain of RC elements, which obey these relations by construction, and checks that the leftover errors are small and random [[11]](#ref-11).
 
-The usual way to look at the result is a Nyquist plot: $$-Z''$$ against $$Z'$$, one point per frequency, high frequencies on the left. Both axes should share the same scale, otherwise circles turn into ellipses. Two shapes matter for this post:
+</details>
+
+The usual way to look at the result is a Nyquist plot: $$-Z''$$ against $$Z'$$, one point per frequency, high frequencies on the left. Two shapes matter for this post:
 
 - **No charge transfer** (as in the non-Faradaic window): $$R_s$$ in series with $$C_{\text{DL}}$$ gives a vertical line, starting at $$R_s$$.
 - **Charge transfer**: $$R_s$$ in series with $$R_{ct}$$ in parallel with $$C_{\text{DL}}$$ gives a semicircle from $$R_s$$ to $$R_s + R_{ct}$$, with its apex at $$\omega = 1/(R_{ct}\,C_{\text{DL}})$$.
@@ -70,7 +76,7 @@ The usual way to look at the result is a Nyquist plot: $$-Z''$$ against $$Z'$$, 
   </div>
 </div>
 <div class="caption">
-  The two Nyquist shapes behind my measurements, computed from the circuit equations (illustrative values; dots mark individual frequencies). Real electrodes behave more like a constant phase element (CPE, more on it below): the vertical line tilts and the semicircle flattens. After Lazanas & Prodromidis <a href="#ref-11">[11]</a>.
+  Fig 2. The two Nyquist shapes behind my measurements, computed from the circuit equations (illustrative values; dots mark individual frequencies). Real electrodes behave more like a constant phase element (CPE, more on it below): the vertical line tilts and the semicircle flattens. After Lazanas & Prodromidis <a href="#ref-11">[11]</a>.
 </div>
 
 Another caveat: an equivalent circuit is a model, not a measurement. Different circuits can produce identical spectra, so every element in a fit needs a physical reason to be there. For a much fuller (and very readable) treatment, see the open-access tutorial by Lazanas and Prodromidis [[11]](#ref-11).
@@ -94,10 +100,10 @@ That is the charge-transfer case from above, so on a Nyquist plot it should clos
   </div>
 </div>
 <div class="caption">
-  gEIS on one of my samples, closely tracing the typical semicircle, with its R–RC fit. Replotted from my MSc thesis <a href="#ref-1">[1]</a>, with points digitized from the printed figure.
+  Fig 3. gEIS on one of my samples, closely tracing the typical semicircle, with its R–RC fit. Replotted from my MSc thesis <a href="#ref-1">[1]</a>, with points digitized from the printed figure.
 </div>
 
-**What I concluded.** After calculating the ECSAs, I foudn that most, though not all, of my Ni–W coatings had *lower* ECSA-normalized activity than bare nickel foam. In other words, the deposits performed better per geometric cm² mainly because they added surface area, not because the Ni–W sites were intrinsically better. The best NiW electrodes who **did** outperform pure Ni foam all came from 0.1 M tungstate, and tended to activate rather than degrade during cycling.
+**What I concluded.** After calculating the ECSAs, I found that most, though not all, of my Ni–W coatings had *lower* ECSA-normalized activity than bare nickel foam. In other words, the deposits performed better per geometric cm² mainly because they added surface area, not because the Ni–W sites were intrinsically better. The best NiW electrodes that **did** outperform pure Ni foam all came from 0.1 M tungstate, and tended to activate rather than degrade during cycling.
 
 ## Three years later: CatBot asks the same question
 
@@ -137,13 +143,13 @@ Double-layer capacitance responds to the charged interface wherever it exists, n
 
 Their compilation of reported specific capacitances spans from a few to over 200 µF cm⁻², depending on electrode material, electrolyte and measurement protocol. The same metal in two electrolyte concentrations, or the same RuO₂ facet (ordered versus disordered), can differ by close to a factor of two. One proposed workaround is to measure in an electrolyte chosen to suppress ion transfer across the interface, so that only genuine double-layer charging gets counted [[8]](#ref-8). The one aqueous nickel value in their figure sits around 30 µF cm⁻² (though measured in NaClO₄, not KOH as in my case). Even the "standard" shortcuts disagree: 20 µF cm⁻² is common for flat metals, while an influential OER benchmarking study used 40 µF cm⁻² in 1 M NaOH [[10]](#ref-10). That's a factor of two in ECSA from the choice of citation.
 
-<div class="row mt-3">
-  <div class="col-sm mt-3 mt-md-0">
+<div class="row justify-content-sm-center mt-3">
+  <div class="col-sm-8 mt-3 mt-md-0">
     {% include figure.liquid loading="eager" path="assets/img/posts/ecsa/mygind2026-fig6-capacitance.png" class="img-fluid rounded z-depth-1" zoomable=true alt="Bar chart of reported specific capacitance values across electrode-electrolyte systems" %}
   </div>
 </div>
 <div class="caption">
-  Reported specific capacitances vary widely across materials, electrolytes and methods. Solid bars: cyclic voltammetry; hatched: EIS. From Mygind, Rost & Escudero-Escribano <a href="#ref-3">[3]</a>, ACS Energy Lett. 2026, Fig. 6. © 2026 The Authors, CC BY 4.0.
+  Fig 4. Reported specific capacitances vary widely across materials, electrolytes and methods. Solid bars: cyclic voltammetry; hatched: EIS. From Mygind, Rost & Escudero-Escribano <a href="#ref-3">[3]</a>, ACS Energy Lett. 2026, Fig. 6. © 2026 The Authors, CC BY 4.0.
 </div>
 
 Since ECSA scales as $$1/C_s$$, any error in $$C_s$$ passes straight into the area, and inversely into "intrinsic" activity. In my results, comparing Ni–W against bare nickel foam with one $$C_s$$ essentially assumed that adding W doesn't change the capacitance per unit of real area. I think the qualitative conclusion holds up, and CatBot points the same way on roughness. But it still remains an assumption that quantitatively would lead to different numbers if I had measured the actual $$C_s$$ instead.
@@ -182,13 +188,13 @@ $$
 
 The catch: the probe has to sample the same sites that drive the reaction. Strongly binding sites tend to dominate probe charge, whereas the best catalytic sites, per the [Sabatier principle](https://www.frontiersin.org/journals/energy-research/articles/10.3389/fenrg.2021.654460/full), bind intermediates neither too strongly nor too weakly. Same electrode, potentially different site populations.
 
-<div class="row mt-3">
-  <div class="col-sm-8 mt-3 mt-md-0 mx-auto">
+<div class="row justify-content-sm-center mt-3">
+  <div class="col-sm-8 mt-3 mt-md-0">
     {% include figure.liquid loading="eager" path="assets/img/posts/ecsa/mygind2026-fig7-flowchart.png" class="img-fluid rounded z-depth-1" zoomable=true alt="Flowchart for choosing a normalization strategy" %}
   </div>
 </div>
 <div class="caption">
-  Picking a normalization: real surface area for architecture effects; site counting for intrinsic activity, if a probe genuinely reflects the active sites; otherwise real surface area with its assumptions stated. From Mygind, Rost & Escudero-Escribano <a href="#ref-3">[3]</a>, ACS Energy Lett. 2026, Fig. 7. © 2026 The Authors, CC BY 4.0.
+  Fig 5. Picking a normalization: real surface area for architecture effects; site counting for intrinsic activity, if a probe genuinely reflects the active sites; otherwise real surface area with its assumptions stated. From Mygind, Rost & Escudero-Escribano <a href="#ref-3">[3]</a>, ACS Energy Lett. 2026, Fig. 7. © 2026 The Authors, CC BY 4.0.
 </div>
 
 ## What I'd do now, for more robust results
@@ -201,7 +207,7 @@ The catch: the probe has to sample the same sites that drive the reaction. Stron
 - **Measure before and after stability testing.** Determining morphological changes to the area is critical for explainable results, as shown in the CatBot experiments.
 - **Treat ECSA as a diagnostic**, cross-checked against evidence from SEM and XPS measurements, rather than a metric to rank catalysts by.
 
-## What I still don't know
+## Conclusions & What I still don't know
 
 Back to the iceberg. Here are some more questions I can now ask, but not yet answer:
 
@@ -210,7 +216,7 @@ Back to the iceberg. Here are some more questions I can now ask, but not yet ans
 - When composition shifts during operation (such as Mo or W leaching), how far does $$C_s$$ move with it, if at all?
 - What were the last few low-frequency gEIS points doing below the real axis in my plot? The EIS tutorial [[11]](#ref-11) notes that low-frequency inductive loops are usually blamed on adsorbed reaction intermediates (and the HER has one: adsorbed hydrogen). Drift during a long, low-frequency measurement (bubbles forming under the HER current, for one) can produce artefacts too, and a Kramers–Kronig test would have told me which.
 
-So, after all this I'm a bit closer to knowing how much I don't know. My main takeaway from this whole exercise is that reproducibility of catalytic (or really any electrochemical) experiments is critical, and reporting results in an agreed upon, normalized fashion would go a long way towards achieving it. At the same time, incorporating classic systematic and statistical error propagation techniques relevant to one's experimental setup and parameters is another area that I find is often overlooked and that I like to focus on. Beyond typical error estimation through the Bayesian optimization loop itself, I think it can often help a researcher pinpoint hidden weaknesses in a setup, before running a full autonomous discovery loop.
+So, after all this I'm a bit closer to knowing how much I don't know. My main takeaway from this whole exercise is that **reproducibility of catalytic (or really any electrochemical) experiments is critical**, and reporting results in an agreed upon, normalized fashion would go a long way towards achieving it. At the same time, incorporating classic systematic and statistical **uncertainty propagation methods** relevant to one's experimental setup and parameters is another area that I find is often overlooked and that I like to focus on. Beyond typical error estimation through the Bayesian optimization loop itself, I think it can often help a researcher pinpoint hidden weaknesses in a setup, before running a full autonomous discovery loop.
 
 *If you're curious about the optimization side, I rebuilt the thesis Bayesian-optimization workflow in Ax, built on top of BoTorch (check out the related project side [here](https://michailmitsakis.github.io/projects/msc-thesis/) and the repo [Ax_bayes_opt_NiW](https://github.com/michailmitsakis/Ax_bayes_opt_NiW))* 
 
