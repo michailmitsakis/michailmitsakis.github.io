@@ -18,7 +18,7 @@ Electrochemistry is complicated. It gets more complicated the deeper you get int
 > **TL;DR**
 >
 > - Every activity metric in electrocatalysis is a current divided by an area. Pick a different area and you can reach a different conclusion if you're not careful.
-> - The textbook shortcut for the ECSA, gives an *apparent* area, resting on several assumptions.
+> - The textbook shortcut for the ECSA gives an *apparent* area, resting on several assumptions.
 > - That doesn't make it useless, but one does need to measure it carefully, and read it as a diagnostic rather than a ranking between catalysts.
 {: .block-tip }
 
@@ -45,7 +45,7 @@ The overpotential is the extra potential beyond equilibrium needed to run a reac
   </div>
 </div>
 <div class="caption">
-  Fig 1. Left: a schematic CV (cyclic voltammogram) with the non-Faradaic window marked; the only current there is double-layer charging. Right: inner and outer Helmholtz planes and the diffuse layer. Redrawn after corresponding figures of my MSc thesis <a href="#ref-1">[1]</a>, which were adapted from <a href="#ref-13">[13]</a> and <a href="#ref-14">[14]</a>.
+  Fig 1. Left: a schematic CV (cyclic voltammogram) with the non-Faradaic window marked; the only current there is double-layer charging. Right: inner and outer Helmholtz planes and the diffuse layer. Redrawn after corresponding figures of my thesis <a href="#ref-1">[1]</a>, which were adapted from <a href="#ref-13">[13]</a> and <a href="#ref-14">[14]</a>.
 </div>
 
 **The measurement.** So how do you measure the ECSA? More real surface means more capacitance. So, divide the measured double-layer capacitance by the capacitance of an ideally flat surface of the same material, or the *specific capacitance* $$C_s$$, and you get: 
@@ -57,45 +57,39 @@ The real $$C_s$$ is typically unknown, so common practice is to borrow a literat
 **Measuring $$C_{\text{DL}}$$.** There are two standard routes. One is to run CVs at several scan rates inside the non-Faradaic window and take the slope of charging current against scan rate, $$i_c = C_{\text{DL}}\,\nu$$ [[7]](#ref-7). The other is electrochemical impedance spectroscopy (EIS). I went with EIS, mainly for speed, which matters when every sample sits inside an optimization loop.
 
 <details markdown="1">
-<summary><strong>EIS in 90 seconds</strong> (click to expand)</summary>
+<summary><strong>EIS explained, briefly</strong> (click to expand)</summary>
 
-**EIS explained, briefly.** A CV sweeps the potential and watches the current. EIS instead holds the electrode at a fixed DC operating point and adds a small wiggle on top: a sinusoidal voltage of typically 5–10 mV (potentiostatic) or a small AC current (galvanostatic). The response is recorded one frequency at a time, usually from about 100 kHz down into the mHz range. The ratio of the two sine waves (their amplitude ratio and phase shift) is the impedance, $$Z(\omega) = Z' + jZ''$$, where $$j$$ is the imaginary unit, not a current density.
+A CV sweeps the potential and watches the current. EIS instead holds the electrode at a fixed DC operating point and adds a small wiggle on top: a sinusoidal voltage of typically 5–10 mV (potentiostatic) or a small AC current (galvanostatic). The response is recorded one frequency at a time, usually from about 100 kHz down into the mHz range. The ratio of the two sine waves (their amplitude ratio and phase shift) is the impedance, $$Z(\omega) = Z' + jZ''$$, where $$j$$ is the imaginary unit, not a current density.
 
 The payoff is separation. Every process at the interface has its own time constant, $$\tau = RC$$. Fast processes, like ions moving through the electrolyte, respond at high frequencies; slower ones, like charge transfer, adsorption and diffusion, respond at low frequencies. One frequency sweep pulls apart what a CV smears together. The fine print: this only works if the system responds linearly (hence the small amplitude), stays stable for the whole sweep, and responds only to the perturbation. A Kramers–Kronig test checks this before you fit anything. For any linear, stable, causal system, the real and imaginary parts of the impedance are mathematically linked, so each can be calculated from the other; if the measured parts disagree, something went wrong during the measurement. In practice, software fits the spectrum with a long chain of RC elements, which obey these relations by construction, and checks that the leftover errors are small and random [[11]](#ref-11).
 
-</details>
-
-The usual way to look at the result is a Nyquist plot: $$-Z''$$ against $$Z'$$, one point per frequency, high frequencies on the left. Two shapes matter for this post:
-
-- **No charge transfer** (as in the non-Faradaic window): $$R_s$$ in series with $$C_{\text{DL}}$$ gives a vertical line, starting at $$R_s$$.
-- **Charge transfer**: $$R_s$$ in series with $$R_{ct}$$ in parallel with $$C_{\text{DL}}$$ gives a semicircle from $$R_s$$ to $$R_s + R_{ct}$$, with its apex at $$\omega = 1/(R_{ct}\,C_{\text{DL}})$$.
-
-<div class="row mt-3">
-  <div class="col-sm mt-3 mt-md-0">
-    {% include figure.liquid loading="eager" path="assets/img/posts/ecsa/eis-nyquist-primer.png" class="img-fluid rounded z-depth-1" zoomable=true alt="Nyquist plots of a blocking electrode (vertical line) and a charge-transfer interface (semicircle), each for an ideal capacitor and a constant phase element" %}
-  </div>
-</div>
-<div class="caption">
-  Fig 2. The two Nyquist shapes behind my measurements, computed from the circuit equations (illustrative values; dots mark individual frequencies). Real electrodes behave more like a constant phase element (CPE, more on it below): the vertical line tilts and the semicircle flattens. After Lazanas & Prodromidis <a href="#ref-11">[11]</a>.
-</div>
+In my thesis I also ran potentiostatic EIS in the non-Faradaic window, but only as a qualitative check; every number in this post comes from the galvanostatic measurements (gEIS) shown below.
 
 Another caveat: an equivalent circuit is a model, not a measurement. Different circuits can produce identical spectra, so every element in a fit needs a physical reason to be there. For a much fuller (and very readable) treatment, see the open-access tutorial by Lazanas and Prodromidis [[11]](#ref-11).
 
-**My two measurements.** In the thesis I ran EIS in two flavours:
+</details>
 
-- **pEIS** (potentiostatic): a small AC potential on top of a DC bias set in the middle of the non-Faradaic window. Used to extract $$C_{\text{DL}}$$.
-- **gEIS** (galvanostatic): a small AC current perturbation on top of a DC current, i.e. with hydrogen evolution running. Used mainly for the ohmic (solution) uncompensated resistance correction *(the so-called iR correction)*.
-
-Both were fitted with a simple R–RC circuit: a solution resistance $$R_s$$ in series with a charge-transfer resistance $$R_{ct}$$ that sits in parallel with the double layer:
+The usual way to look at an impedance spectrum is a Nyquist plot: $$-Z''$$ against $$Z'$$, one point per frequency, high frequencies on the left. The simplest model with charge transfer is the R–RC circuit (Fig. 2, left): a solution resistance $$R_s$$ in series with a charge-transfer resistance $$R_{ct}$$ that sits in parallel with the double layer:
 
 $$
 Z(\omega) = R_s + \frac{R_{ct}}{1 + j\omega R_{ct}\, C_{\text{DL}}}
 $$
 
-That is the charge-transfer case from above, so on a Nyquist plot it should closely trace a semicircle. The gEIS spectrum, measured under a DC current with hydrogen evolution running, does exactly that: charge transfer occurs here, and $$R_{ct}$$ reflects the HER kinetics at that current.
+On a Nyquist plot, this traces a semicircle from $$R_s$$ to $$R_s + R_{ct}$$, with its apex at $$\omega = 1/(R_{ct}\,C_{\text{DL}})$$ (Fig. 2, right).
 
 <div class="row mt-3">
-  <div class="col-sm-7 mt-3 mt-md-0 mx-auto">
+  <div class="col-sm mt-3 mt-md-0">
+    {% include figure.liquid loading="eager" path="assets/img/posts/ecsa/eis-nyquist-primer.png" class="img-fluid rounded z-depth-1" zoomable=true alt="The R-RC equivalent circuit and its semicircular Nyquist plot, for an ideal capacitor and a constant phase element" %}
+  </div>
+</div>
+<div class="caption">
+  Fig 2. Left: the R–RC equivalent circuit. Right: its Nyquist plot, computed from the circuit equation (illustrative values; dots mark individual frequencies). Real electrodes behave more like a constant phase element (CPE, more on it below), which flattens the semicircle. After Lazanas & Prodromidis <a href="#ref-11">[11]</a>.
+</div>
+
+**My measurement.** The gEIS applied a small AC current perturbation on top of a DC current, i.e. with hydrogen evolution running. Its spectrum closely traces the R–RC semicircle (Fig. 3): charge transfer occurs here, and $$R_{ct}$$ reflects the HER kinetics at that current. The same fit gave me both numbers I needed: $$R_s$$ for the ohmic (solution) resistance correction *(the so-called iR correction)*, and $$C_{\text{DL}}$$ for the ECSA. That's one advantage of EIS: the semicircle separates the double layer from charge transfer even with the reaction running, so no non-Faradaic window is needed.
+
+<div class="row justify-content-sm-center mt-3">
+  <div class="col-sm-7 mt-3 mt-md-0">
     {% include figure.liquid loading="eager" path="assets/img/posts/ecsa/thesis-geis-nyquist.png" class="img-fluid rounded z-depth-1" zoomable=true alt="gEIS Nyquist plot showing a semicircle and its R-RC fit" %}
   </div>
 </div>
@@ -141,7 +135,7 @@ Double-layer capacitance responds to the charged interface wherever it exists, n
 
 ### 2. $$C_s$$ is not a constant
 
-Their compilation of reported specific capacitances spans from a few to over 200 µF cm⁻², depending on electrode material, electrolyte and measurement protocol. The same metal in two electrolyte concentrations, or the same RuO₂ facet (ordered versus disordered), can differ by close to a factor of two. One proposed workaround is to measure in an electrolyte chosen to suppress ion transfer across the interface, so that only genuine double-layer charging gets counted [[8]](#ref-8). The one aqueous nickel value in their figure sits around 30 µF cm⁻² (though measured in NaClO₄, not KOH as in my case). Even the "standard" shortcuts disagree: 20 µF cm⁻² is common for flat metals, while an influential OER benchmarking study used 40 µF cm⁻² in 1 M NaOH [[10]](#ref-10). That's a factor of two in ECSA from the choice of citation.
+Their compilation of reported specific capacitances spans from a few to over 200 µF cm⁻², depending on electrode material, electrolyte and measurement protocol. The same metal in two electrolyte concentrations, or the same RuO₂ facet (ordered versus disordered), can differ by close to a factor of two. One proposed workaround is to measure in an electrolyte chosen to suppress ion transfer across the interface, so that only genuine double-layer charging gets counted [[8]](#ref-8). The one aqueous nickel value in Fig. 4 sits around 30 µF cm⁻² (though measured in NaClO₄, not KOH as in my case). Even the "standard" shortcuts disagree: 20 µF cm⁻² is common for flat metals, while an influential OER benchmarking study used 40 µF cm⁻² in 1 M NaOH [[10]](#ref-10). That's a factor of two in ECSA from the choice of citation.
 
 <div class="row justify-content-sm-center mt-3">
   <div class="col-sm-8 mt-3 mt-md-0">
@@ -162,13 +156,13 @@ $$
 Z_{\text{CPE}}(\omega) = \frac{1}{(j\omega)^{\alpha}\, Y_0}
 $$
 
-With $$\alpha = 1$$ you recover an ideal capacitor; anything below 1 tilts the vertical line from the primer figure above. The catch for ECSA: $$Y_0$$ is not a capacitance (its units are F s<sup>α−1</sup>), so it can't go straight into $$C_{\text{DL}}/C_s$$. For a blocking electrode, Brug's formula [[12]](#ref-12) converts it into an effective capacitance first:
+With $$\alpha = 1$$ you recover an ideal capacitor; the further $$\alpha$$ drops below 1, the flatter the semicircle gets (the purple curve in Fig. 2). The catch for ECSA: $$Y_0$$ is not a capacitance (its units are F s<sup>α−1</sup>), so it can't go straight into $$C_{\text{DL}}/C_s$$. Brug's formula [[12]](#ref-12) converts it into an effective capacitance first. With charge transfer present, as in an R–RC fit under HER, it reads:
 
 $$
-C_{\text{eff}} = Y_0^{1/\alpha}\, R_s^{(1-\alpha)/\alpha}
+C_{\text{eff}} = \left[ Y_0 \left( \frac{1}{R_s} + \frac{1}{R_{ct}} \right)^{\alpha - 1} \right]^{1/\alpha}
 $$
 
-Even then, as $$\alpha$$ drops, the result is more an effective, phenomenological number than one physical capacitance. Porosity adds a further wrinkle: deep pores need enough time (lower frequencies) and enough ionic strength to charge, so the chosen frequency window decides how much of a porous electrode, like a nickel foam, you actually "see". 
+Even then, as $$\alpha$$ drops, the result is more of an effective number than a physical capacitance. Porosity adds a further wrinkle: deep pores need enough time (lower frequencies) and enough ionic strength to charge, so the chosen frequency window decides how much of a porous electrode, like a nickel foam, you actually "see". 
 
 ### The Faradaic route?
 
@@ -202,7 +196,7 @@ The catch: the probe has to sample the same sites that drive the reaction. Stron
 - **Choose the area.** Given my specific assumptions, be more clear about which 'area' I would normalize over. Geometric, apparent real area, ECSA from which probe, or even directly the active sites. 
 - **Ideally measure $$C_{\text{DL}}$$ two ways**, both by CV scan rate [[7]](#ref-7) and by EIS.
 - **Check the EIS data before fitting.** Run a Kramers–Kronig test, and repeat at two amplitudes to confirm the response is linear.
-- **Fit the right circuit.** In the non-Faradaic window that means $$R_s$$ in series with a CPE, rather than the R–RC I used. Report α, and convert $$Y_0$$ to an effective capacitance before dividing by $$C_s$$.
+- **Fit a CPE, not an ideal capacitor.** Under HER that means $$R_s$$ in series with $$R_{ct}$$ in parallel with a CPE, rather than the ideal R–RC I used. Report α, and convert $$Y_0$$ to an effective capacitance (Brug) before dividing by $$C_s$$.
 - **State $$C_s$$ and its source.** Or better still, measure it on a smooth reference of the same material in the same electrolyte. 
 - **Measure before and after stability testing.** Determining morphological changes to the area is critical for explainable results, as shown in the CatBot experiments.
 - **Treat ECSA as a diagnostic**, cross-checked against evidence from SEM and XPS measurements, rather than a metric to rank catalysts by.
@@ -214,11 +208,11 @@ Back to the iceberg. Here are some more questions I can now ask, but not yet ans
 - For Ni-based alloys in higher temperature and more concentrated KOH, which probe (if any) reflects the HER-active sites the way H-UPD does on Pt? A comparison of ECSA methods on nickel nanostructures [[9]](#ref-9) is a good starting point.
 - How much of a porous foam's surface does a given EIS frequency window actually sample?
 - When composition shifts during operation (such as Mo or W leaching), how far does $$C_s$$ move with it, if at all?
-- What were the last few low-frequency gEIS points doing below the real axis in my plot? The EIS tutorial [[11]](#ref-11) notes that low-frequency inductive loops are usually blamed on adsorbed reaction intermediates (and the HER has one: adsorbed hydrogen). Drift during a long, low-frequency measurement (bubbles forming under the HER current, for one) can produce artefacts too, and a Kramers–Kronig test would have told me which.
+- What were the last few low-frequency gEIS points doing below the real axis in Fig. 3? The EIS tutorial [[11]](#ref-11) notes that low-frequency inductive loops are usually blamed on adsorbed reaction intermediates (and the HER has one: adsorbed hydrogen). Drift during a long, low-frequency measurement (bubbles forming under the HER current, for one) can produce artefacts too, and a Kramers–Kronig test would have told me which.
 
 So, after all this I'm a bit closer to knowing how much I don't know. My main takeaway from this whole exercise is that **reproducibility of catalytic (or really any electrochemical) experiments is critical**, and reporting results in an agreed upon, normalized fashion would go a long way towards achieving it. At the same time, incorporating classic systematic and statistical **uncertainty propagation methods** relevant to one's experimental setup and parameters is another area that I find is often overlooked and that I like to focus on. Beyond typical error estimation through the Bayesian optimization loop itself, I think it can often help a researcher pinpoint hidden weaknesses in a setup, before running a full autonomous discovery loop.
 
-*If you're curious about the optimization side, I rebuilt the thesis Bayesian-optimization workflow in Ax, built on top of BoTorch (check out the related project side [here](https://michailmitsakis.github.io/projects/msc-thesis/) and the repo [Ax_bayes_opt_NiW](https://github.com/michailmitsakis/Ax_bayes_opt_NiW))* 
+*If you're curious about the optimization side, I rebuilt the thesis Bayesian-optimization workflow in Ax, built on top of BoTorch (check out the related project page [here](https://michailmitsakis.github.io/projects/msc-thesis/) and the repo [Ax_bayes_opt_NiW](https://github.com/michailmitsakis/Ax_bayes_opt_NiW))* 
 
 ## References
 
