@@ -18,7 +18,7 @@ permalink: /projects/msc-thesis/
 Electrodeposition is a cheap, scalable way to make electrocatalysts. The performance of the produced catalyst, however, depends on a large set of coupled
 parameters: bath composition, current density, deposition time and temperature. My thesis explored how to choose those parameters to improve **hydrogen evolution
 reaction (HER)** performance, using multi-objective Bayesian optimization (BO) to trade off activity against stability. After graduating I rebuilt the same
-loop in [Ax](https://ax.dev/), described [below](#rebuilding-the-workflow-in-ax).
+loop in [Ax](https://ax.dev/) (built on [BoTorch]()), described [below](#rebuilding-the-workflow-in-ax).
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
