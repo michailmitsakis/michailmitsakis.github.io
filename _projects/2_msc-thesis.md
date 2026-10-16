@@ -9,9 +9,7 @@ github: https://github.com/michailmitsakis/Ax_bayes_opt_NiW
 permalink: /projects/msc-thesis/
 ---
 
-<!-- TODO: link the thesis PDF and consider adding a lab figure (e.g. polarisation curves or an SEM image). -->
-
-**MSc Engineering – Physics & Nanotechnology** · DTU Energy · 2023 · Supervisors: Christodoulos Chatzichristodoulou
+**MSc Engineering – Physics & Nanotechnology** · DTU Energy · 2023 · Supervisors: Christodoulos Chatzichristodoulou, Jinhyun Chang, Pradipkumar Manubhai Leuaa, Gastón Larrazábal
 
 **Code:** [github.com/michailmitsakis/Ax_bayes_opt_NiW](https://github.com/michailmitsakis/Ax_bayes_opt_NiW) · 
 

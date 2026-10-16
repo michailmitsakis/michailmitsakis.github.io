@@ -101,20 +101,20 @@ On a Nyquist plot, this traces a semicircle from $$R_s$$ to $$R_s + R_{ct}$$, wi
 
 ## Three years later: CatBot asks the same question
 
-A 2026 DTU study [[2]](#ref-2) (led by the group that supervised my thesis) reports results from **CatBot** [[4]](#ref-4), a roll-to-roll robot that electrodeposits NiMo coatings on nickel wire and tests them in 30 wt% KOH at 80 °C, closer to industrial alkaline electrolysis conditions. A Gaussian-process Bayesian optimizer (based on BoTorch) chose each next recipe across six deposition parameters, a space of roughly 3.5 × 10¹⁴ combinations. Here, the objective folded activity and stability into one number: the average HER overpotential at −10 mA cm⁻² over 100 stress-test CV cycles. The best coatings reached about 63 mV within 30–40 experiments, and the top recipe, scaled up to nickel foam, needed about 173 mV to reach 1 A cm⁻².
+A 2026 DTU study [[2]](#ref-2) (led by the group that supervised my thesis) reports results from **CatBot** [[4]](#ref-4), a roll-to-roll robot that electrodeposits NiMo coatings on nickel wire and tests them in 30 wt% KOH at 80 °C, closer to industrial alkaline electrolysis conditions. A Gaussian-process Bayesian optimizer (based on BoTorch) chose each next recipe across six deposition parameters, a space of roughly 3.5 × 10¹⁴ combinations. Here, the objective merges activity and stability into one objective (so single objective vs multi-objective optimization): the average HER overpotential at −10 mA cm⁻² over 100 stress-test CV cycles. The best coatings reached about 63 mV within 30–40 experiments, and the top recipe, scaled up to nickel foam, needed about 173 mV to reach 1 A cm⁻².
 
-It is essentially a much improved system of what I originally used: a similar nickel–group-6 alloy (Mo instead of W), electrodeposited from a citrate bath, with Bayesian optimization choosing the recipes. And underneath it all, the same question: **is the improvement coming from better sites, or from more surface?**
+It is essentially a much improved system of what I originally used: a similar nickel–group-6 alloy (Mo instead of W), electrodeposited from a citrate bath, with Bayesian optimization choosing the recipes. And underneath it all, the same question: **is the improvement coming from an intrinsically better catalyst, or from more active surface?**
 
 How they used ECSA:
 - **As a diagnostic.** Comparing their top coatings with randomly chosen baselines, higher performance correlated strongly with larger ECSA.
-- **Cross-checked with structure and composition, which I didn't have time to do.** SEM showed the best coatings were noticeably rougher, with dense small globular clusters; XPS showed more Mo in the samples. Deposition temperature tracked roughening, while sulfuric acid addition tracked Mo incorporation.
-- **As a contributing factor.** They conclude there are two contributions: more Mo, and a rougher surface that *may* provide a larger ECSA. I originally attributed the activity gain mostly to area; they find that it is likely both.
+- **Cross-checked with structure and composition, which I didn't have time to do.** SEM showed the best coatings were noticeably rougher, with dense small globular clusters; XPS showed more Mo in the samples. Deposition temperature correlated with roughening, while sulfuric acid addition tracked Mo incorporation.
+- **As a contributing factor.** They conclude there are two contributions: more Mo, and a rougher surface that *may* provide a larger ECSA. I originally attributed the activity gain mostly to the ECSA; they find that in this case it is likely both.
 
 Three details stood out to me:
 
-- **Temperature.** Their SHAP analysis of a fitted XGBoost model ranks deposition temperature as the most influential input, by a wide margin. Different alloy to tungsten, and a different range, so not a direct comparison; still, it's ironically the parameter I found I couldn't count on due to large systematic experimental errors with my more primitive experimental setup.
-- **The roughness factor influence.** To transfer recipes from wire to foam, they scaled the deposition current using a roughness factor of 16.5 for the foam. Same $$R_f$$ as above, now a process parameter.
-- **The surface moves.** After on/off cycling in a flow cell, the coating cracked and partly delaminated, and its Mo content halved (3.9 → 1.9 at.%). Again, we can see how complex such system can be and how quickly their morphology can change, especially during dynamic operation.
+- **Temperature.** Their SHAP analysis of a fitted XGBoost model ranks deposition temperature as the most influential input, by a wide margin. Different but similar alloy to my NiW, and a different parameter range, so not a 1-1 comparison; still, it's ironically the parameter I found I couldn't count on due to large systematic experimental errors with my more primitive experimental setup.
+- **The roughness factor influence.** To transfer recipes from wire to foam, they scaled the deposition current using a roughness factor of 16.5 for the foam. 
+- **The surface moves.** After on/off cycling in a flow cell, the coating cracked and partly delaminated, and its Mo content halved (3.9 → 1.9 at.%). Again, we can see how complex such systems can be and how quickly their morphology can change, especially during dynamic operation, present in industrial conditions.
 
 ## What that number was assuming
 
@@ -166,7 +166,7 @@ Even then, as $$\alpha$$ drops, the result is more of an effective number than a
 
 ### The Faradaic route?
 
-The alternative to the double layer is to count the charge of a surface reaction that stops once a single layer has formed: hydrogen underpotential deposition (H-UPD) on Pt, metal UPD such as Pb on Cu, CO stripping, or surface-oxide reduction. Because the reaction is self-limiting, its charge scales with the number of surface sites. The measured charge is first corrected for double-layer charging and any coadsorbed species, $$Q_{\text{corr}} = Q_{\text{meas}} - Q_{\text{DL}} - Q_{\text{co}}$$, then divided by a reference charge per cm² of ideal surface. That reference charge is where the trouble starts, because most values in use are historical or idealized rather than measured on the surface at hand. The famous 210 µC cm⁻² for H-UPD on platinum traces back to unpublished krypton-adsorption measurements from the 1960s; decades later, Trasatti and Petrii [[5]](#ref-5) wrote that "the absolute significance of the accepted $$Q_{H,s}$$ is questionable." Similarly, the 516 µC cm⁻² often used for nickel-oxide reduction assumes a full monolayer on an idealized (100) terrace, with two electrons per surface atom.
+The alternative to the double layer is to count the charge of a surface reaction that stops once a single layer has formed: [hydrogen underpotential deposition (H-UPD)] (https://www.sciencedirect.com/topics/chemistry/underpotential-deposition) on Pt, metal UPD such as Pb on Cu, [CO stripping] (https://en.wikipedia.org/wiki/CO_stripping), or [surface-oxide reduction] (https://www.sciencedirect.com/science/article/pii/S0040603120306468). Because the reaction is self-limiting, its charge scales with the number of surface sites. The measured charge is first corrected for double-layer charging and any coadsorbed species, $$Q_{\text{corr}} = Q_{\text{meas}} - Q_{\text{DL}} - Q_{\text{co}}$$, then divided by a reference charge per cm² of ideal surface. That reference charge is where the trouble starts, because most values in use are historical or idealized rather than measured on the surface at hand. The famous 210 µC cm⁻² for H-UPD on platinum traces back to unpublished krypton-adsorption measurements from the 1960s; decades later, Trasatti and Petrii [[5]](#ref-5) wrote that "the absolute significance of the accepted $$Q_{H,s}$$ is questionable." Similarly, the 516 µC cm⁻² often used for nickel-oxide reduction assumes a full monolayer on an idealized (100) terrace, with two electrons per surface atom.
 
 Real surfaces rarely look like that, and the probe cycles themselves can restructure the very surface being measured, as well established by say, SEM/XPS measurements before and after. For well-characterized electrodes, Mygind et al. show a more rigorous option: build the reference from facet-specific values, weighted by the fraction of each facet present (from diffraction or microscopy). It's more accurate, but it needs structural data that is often more difficult to find.
 
@@ -193,13 +193,12 @@ The catch: the probe has to sample the same sites that drive the reaction. Stron
 
 ## What I'd do now, for more robust results
 
-- **Choose the area.** Given my specific assumptions, be more clear about which 'area' I would normalize over. Geometric, apparent real area, ECSA from which probe, or even directly the active sites. 
+- **Choose the area.** Given my specific assumptions, be more clear about which 'area' I would normalize over. Geometric, apparent real area or ECSA. I would not have used the active sites directly due to the complexity/budget of the setup needed.
 - **Ideally measure $$C_{\text{DL}}$$ two ways**, both by CV scan rate [[7]](#ref-7) and by EIS.
-- **Check the EIS data before fitting.** Run a Kramers–Kronig test, and repeat at two amplitudes to confirm the response is linear.
 - **Fit a CPE, not an ideal capacitor.** Under HER that means $$R_s$$ in series with $$R_{ct}$$ in parallel with a CPE, rather than the ideal R–RC I used. Report α, and convert $$Y_0$$ to an effective capacitance (Brug) before dividing by $$C_s$$.
 - **State $$C_s$$ and its source.** Or better still, measure it on a smooth reference of the same material in the same electrolyte. 
 - **Measure before and after stability testing.** Determining morphological changes to the area is critical for explainable results, as shown in the CatBot experiments.
-- **Treat ECSA as a diagnostic**, cross-checked against evidence from SEM and XPS measurements, rather than a metric to rank catalysts by.
+- **Treat ECSA as even more of a diagnostic**, cross-checked against evidence from SEM and XPS measurements, rather than a metric to rank catalysts by.
 
 ## Conclusions & What I still don't know
 
