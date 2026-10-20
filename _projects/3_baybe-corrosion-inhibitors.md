@@ -1,7 +1,7 @@
 ---
 layout: page
 title: BayBE one more time
-description: Hackathon project — Bayesian optimisation with BayBE to screen small-molecule corrosion inhibitors for aluminium alloys, including transfer learning between alloys.
+description: Hackathon project (3rd place) — Bayesian optimisation with BayBE to screen small-molecule corrosion inhibitors for aluminium alloys, including transfer learning between alloys.
 img: assets/img/projects/baybe-featurization-aa2024.png
 importance: 3
 category: work

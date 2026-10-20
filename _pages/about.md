@@ -49,6 +49,6 @@ You can find takeaways from my readings, research and [projects](/projects/) in 
 
 **Some more stuff I'm interested in:**
  
-Calisthenics · Reading (fantasy, sci-fi, philosophy, mythology, history) · Writing · Philosophy of mind & Ontologies of quantum mechanics · Music (rock, punk, psychedelic, funk, jazz, blues, indie) · Strolls in nature 
+Calisthenics · Gaming · Reading (fantasy, sci-fi, philosophy, mythology, history) · Writing · Philosophy of mind & Ontologies of quantum mechanics · Music (rock, punk, psychedelic, funk, jazz, blues, indie) · Strolls in nature 
 
 I love hearing from people, so please reach out!
