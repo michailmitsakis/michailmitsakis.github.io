@@ -3,7 +3,7 @@ layout: page
 title: CaMEL-RAG
 description: Hackathon project — a retrieval-augmented LLM that answers natural-language questions about catalyst adsorption energies, grounded in Open Catalyst data.
 img: assets/img/projects/camel-rag-workflow.jpg
-importance: 4
+importance: 6
 category: work
 github: https://github.com/michailmitsakis/CaMEL-RAG
 permalink: /projects/camel-rag/
