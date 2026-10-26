@@ -56,7 +56,6 @@ The problem it addresses: knowledge graphs built by AI agents rarely come with g
 </div>
 <div class="caption">
     Left: GP error with all features (blue) against always predicting the subset's mean (grey), for all records and for focused subsets. Right: the two features that do best on their own, and the two whose removal hurts most (leave-one-feature-out), with the change in error in nm.
-    <!-- TODO: add one sentence saying what se_max, se_avg and "saved material" are -->
 </div>
 
 
@@ -66,6 +65,6 @@ The problem it addresses: knowledge graphs built by AI agents rarely come with g
 
 **The main lesson**: extraction quality can be scored without hand-labelled ground truth, as long as there is one trusted measured property to predict. The score is noisy, though, so each change has to beat seed-to-seed variation before the agent keeps it.
 
-**Stack:** MatSciBERT · GPyTorch · Gaussian processes · Agentic loops
+**Stack:** MatSciBERT · GPyTorch 
 
 **Data:** [HybriD³ materials database](https://hybrid3.duke.edu/research/materials-database), Duke University.
