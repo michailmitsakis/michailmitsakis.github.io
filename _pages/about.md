@@ -40,11 +40,10 @@ Alongside that, in my free time I have been diving deeper into the latest resear
 - **[catalyst-kg-agent](/projects/catalyst-kg-agent/)** — a knowledge-graph-grounded, cost-aware multi-agent system that decides when a cheap database lookup is enough and when an expensive simulation is justified, within a simulated SDL-like automated workflow; built to understand the complexities involved in automated discovery
 - **[notion-second-brain](/projects/notion-second-brain/)** — a fully local RAG agent with hybrid retrieval, reranking, and an evaluation harness; for talking to my Notion notes offline
 - **[baybe-corrosion-inhibitors](/projects/baybe-corrosion-inhibitors/)** — Bayesian optimisation with BayBE to screen small-molecule corrosion inhibitors for aluminium alloys, comparing molecular encodings against random search and testing transfer learning between alloys; a hackathon project exploring how far BO can cut the number of real experiments
-- **[camel-rag](/projects/camel-rag/)** — a retrieval-augmented LLM that answers natural-language questions about catalyst adsorption energies, grounded in Open Catalyst DFT data and citing the records it draws on; a hackathon project on making large catalysis datasets queryable without losing traceability
 
 One lesson I have found that holds along all these projects: it's important to do the upfront work on **uncertainty awareness** and **reproducibility** first, before optimizing and diving into the experimental workflow. Electrochemical experiments especially are notoriously difficult to replicate due to the field's heavy reliance on customized apparatus, inconsistent reporting parameters, and high sensitivity to minor variations in experimental conditions. For example, the thesis data showed large systematic errors in temperature, so when I rebuilt the loop in Ax I replaced it with pH to avoid confusing the optimizer. I have tried to bring the same habit to my AI tools by building my projects around simplicity, validation and evaluation as the main throughlines.
 
-At the moment, I'm actively looking for **an industry-aligned PhD or an applied/research role in AI for materials science and manufacturing**, and aiming to help solve the world's hardest problems.
+At the moment, I'm actively looking for **an industry-aligne PhD or an applied/research role in AI for materials science and manufacturing**, and aiming to help solve the world's hardest problems.
 
 You can find takeaways from my readings, research and [projects](/projects/) in [writing](/blog/).
 
