@@ -26,29 +26,31 @@ latest_posts:
   limit: 5 # leave blank to include all the blog posts
 ---
 
+## About Me
+
 Hi! I'm a mission-driven materials scientist, passionate about industrial decarbonization, sustainable energy solutions and accelerating R&D for low-carbon tech through electrochemistry and AI/ML for materials design.
 
 I have a multidisciplinary background and enjoy doing impactful work. I'm specialized in electrochemical synthesis for industrial decarbonization and AI-driven materials discovery, with hands-on experience in Bayesian optimization and building agentic tools for R&D workflows. Consulting on EU energy projects has shown me how scientific innovation translates into actionable insights and real-world impact. I'm seeking to grow my skillset, contribute to the green transition and help solve the world's hardest problems through my fundamentally cross-disciplinary, generalist, systems-thinking mindset.
 
 At DTU, I gained valuable experience in cleanroom and wetlab experimentation and manufacturing, as well as DFT modelling, chemical descriptors, materials screening and optimization. In particular, during my MSc thesis I optimized electrodeposition parameters for **hydrogen evolution reaction (HER) catalysts**. Specifically, I utilized multi-objective Bayesian Optimization (BO) to maximize the activity and stability of electrodeposited Ni-W (nickel-tungsten) alloys under various precursor concentrations, current densities, deposition times and temperatures (with pH held ~ constant) by minimizing their overpotential and overpotential difference (obtained before and after stress-testing the catalysts). After finishing my graduate studies, I continued that work out of deep interest in the field, and developed the same BO method through a more simplified, modular and easier-to-use platform for scientific experimentation, Ax.
 
+## Research Interests
+
 Today, I work at a business and engineering consultancy on **deep-tech and EU-funded programmes**: CCS & hydrogen technologies, manufacturing data spaces, and shipyard digitalisation. That means proposal development, technoeconomic scoping, project management, and working directly with industrial and research partners.
 
-Alongside that, in my free time I have been diving deeper into the latest research in **AI applications for materials discovery and optimization**, such as self-driving labs (SDLs), machine-learning interatomic potentials (MLIPs), advanced BO & LLM use, and more, while participating in hackathons and prototyping certain apps to further advance my understanding of the field. For example:
+Alongside that, in my free time I have been diving deeper into the latest research in **AI applications for materials discovery and optimization**, such as self-driving labs (SDLs), machine-learning interatomic potentials (MLIPs), advanced BO & LLM use, and more, while participating in hackathons and prototyping certain apps to further advance my understanding of the field. 
 
-- **[SALEM](/projects/SALEM/)** — a self-improving agentic loop that scores LLM-extracted literature features by how well a Gaussian process predicts a measured property from them (here the PL peak of hybrid perovskites), then rewrites its extraction questions and database queries to lower that error
+- **[SALEM](/projects/salem/)** — a self-improving agentic loop that scores LLM-extracted literature features by how well a Gaussian process predicts a measured property from them (here the PL peak of hybrid perovskites), then rewrites its extraction questions and database queries to lower that error
 - **[catalyst-kg-agent](/projects/catalyst-kg-agent/)** — a knowledge-graph-grounded, cost-aware multi-agent system that decides when a cheap database lookup is enough and when an expensive simulation is justified, within a simulated SDL-like automated workflow; built to understand the complexities involved in automated discovery
 - **[notion-second-brain](/projects/notion-second-brain/)** — a fully local RAG agent with hybrid retrieval, reranking, and an evaluation harness; for talking to my Notion notes offline
 - **[baybe-corrosion-inhibitors](/projects/baybe-corrosion-inhibitors/)** — Bayesian optimisation with BayBE to screen small-molecule corrosion inhibitors for aluminium alloys, comparing molecular encodings against random search and testing transfer learning between alloys; a hackathon project exploring how far BO can cut the number of real experiments
 
 One lesson I have found that holds along all these projects: it's important to do the upfront work on **uncertainty awareness** and **reproducibility** first, before optimizing and diving into the experimental workflow. Electrochemical experiments especially are notoriously difficult to replicate due to the field's heavy reliance on customized apparatus, inconsistent reporting parameters, and high sensitivity to minor variations in experimental conditions. For example, the thesis data showed large systematic errors in temperature, so when I rebuilt the loop in Ax I replaced it with pH to avoid confusing the optimizer. I have tried to bring the same habit to my AI tools by building my projects around simplicity, validation and evaluation as the main throughlines.
 
-At the moment, I'm actively looking for **an industry-aligned PhD or an applied/research role in AI for materials science and manufacturing**, and aiming to help solve the world's hardest problems.
+**Some more stuff I'm interested in:** 
 
-You can find takeaways from my readings, research and [projects](/projects/) in [writing](/blog/).
-
-**Some more stuff I'm interested in:**
- 
 Calisthenics · Gaming · Reading (fantasy, sci-fi, philosophy, mythology, history) · Writing · Philosophy of mind & Ontologies of quantum mechanics · Music (rock, punk, psychedelic, funk, jazz, blues, indie) · Strolls in nature 
 
-I love hearing from people, so please reach out!
+At the moment, I'm looking for **an industry-aligned PhD or an applied/research roles in AI for materials science and manufacturing**. You can find takeaways from my readings, research and [projects](/projects/) in [writing](/blog/).
+
+I love hearing from people, so please reach out via email or LinkedIn!
