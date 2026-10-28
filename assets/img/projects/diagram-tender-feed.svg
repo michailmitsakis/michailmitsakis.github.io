@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" role="img" aria-label="tender-feed: scrape tender and funding-call pages, keep only new items ranked by energy keywords, and send a weekly email digest">
+<title>tender-feed: scrape tender and funding-call pages, keep only new items ranked by energy keywords, and send a weekly email digest</title>
+
+<style>
+  .line { stroke: #f3eee2; stroke-opacity: .35; stroke-width: 2; fill: none; }
+  .flow { stroke: #5fd4c2; stroke-width: 2.5; fill: none; stroke-dasharray: 6 10;
+           stroke-linecap: round; animation: flow 1.6s linear infinite; }
+  .lbl  { font: 500 24px 'IBM Plex Mono', Consolas, Menlo, 'DejaVu Sans Mono', monospace;
+           letter-spacing: .14em; fill: #c9d6d1; }
+  .cap  { font: 500 15px 'IBM Plex Mono', Consolas, Menlo, 'DejaVu Sans Mono', monospace;
+           letter-spacing: .12em; fill: #5fd4c2; }
+  .div  { stroke: #f3eee2; stroke-opacity: .3; stroke-width: 1.5; }
+  .draw { stroke-dasharray: 100; animation: draw 6s ease-in-out infinite; }
+  .rise { animation: rise 3s ease-in infinite; }
+  .pulse { transform-box: fill-box; transform-origin: center; animation: pulse 2.4s ease-out infinite; }
+  .blink { animation: blink 4.8s ease-in-out infinite; }
+  @keyframes flow  { to { stroke-dashoffset: -32; } }
+  @keyframes draw  { 0% { stroke-dashoffset: 100; } 55%, 100% { stroke-dashoffset: 0; } }
+  @keyframes rise  { 0% { transform: translateY(0); opacity: 0; } 15% { opacity: 1; }
+                      100% { transform: translateY(-62px); opacity: 0; } }
+  @keyframes pulse { 0% { transform: scale(.6); opacity: 1; } 100% { transform: scale(1.9); opacity: 0; } }
+  @keyframes blink { 0%, 40% { opacity: 1; } 55%, 85% { opacity: .25; } 100% { opacity: 1; } }
+  @media (prefers-reduced-motion: reduce) {
+    .flow, .draw, .rise, .pulse, .blink { animation: none; }
+    .draw { stroke-dashoffset: 0; }
+    .rise { opacity: .8; }
+  }
+</style>
+
+<defs>
+  <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse">
+    <circle cx="2" cy="2" r="1.2" fill="#f3eee2" fill-opacity=".07"/>
+  </pattern>
+  <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M1,1 L9,5 L1,9" fill="none" stroke="#5fd4c2" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+
+  <marker id="arrowTeal" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M1,1 L9,5 L1,9" fill="none" stroke="#0b6b61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+  <marker id="arrowCream" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M1,1 L9,5 L1,9" fill="none" stroke="#f3eee2" stroke-opacity=".6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+</defs>
+<rect width="800" height="500" fill="#132a27"/>
+<rect width="800" height="500" fill="url(#dots)"/>
+
+<g transform="translate(0,18)">
+<g fill-opacity=".3"><rect x="104" y="124" width="132" height="84" rx="7" fill="#f3eee2" fill-opacity=".3"/>
+<rect x="104" y="124" width="132" height="16" rx="7" fill="#132a27" fill-opacity=".15"/></g>
+<g fill-opacity=".55"><rect x="92" y="160" width="132" height="84" rx="7" fill="#f3eee2" fill-opacity=".55"/>
+<rect x="92" y="160" width="132" height="16" rx="7" fill="#132a27" fill-opacity=".15"/></g>
+<g fill-opacity="1"><rect x="80" y="196" width="132" height="84" rx="7" fill="#f3eee2" fill-opacity="1"/>
+<rect x="80" y="196" width="132" height="16" rx="7" fill="#132a27" fill-opacity=".15"/></g>
+<circle cx="90" cy="204" r="2.5" fill="#132a27" fill-opacity=".45"/>
+<circle cx="99" cy="204" r="2.5" fill="#132a27" fill-opacity=".45"/>
+<circle cx="108" cy="204" r="2.5" fill="#132a27" fill-opacity=".45"/>
+<rect x="92" y="224" width="96" height="4" rx="2.0" fill="#132a27" fill-opacity=".35"/>
+<rect x="92" y="236" width="70" height="4" rx="2.0" fill="#132a27" fill-opacity=".35"/>
+<rect x="92" y="248" width="104" height="4" rx="2.0" fill="#132a27" fill-opacity=".35"/>
+<rect x="92" y="260" width="60" height="4" rx="2.0" fill="#132a27" fill-opacity=".35"/>
+<path class="line" d="M216,238 C280,238 280,200 326,200"/><path class="flow" d="M216,238 C280,238 280,200 326,200"/>
+<rect x="330" y="118" width="140" height="164" rx="10" fill="#f3eee2"/>
+<rect x="340" y="130" width="120" height="20" rx="5" fill="#5fd4c2" fill-opacity=".5"/>
+<circle cx="352" cy="140" r="4.5" fill="#0b6b61"/>
+<rect x="364" y="137.5" width="84" height="5" rx="2.5" fill="#132a27" fill-opacity=".55"/>
+<rect x="340" y="159" width="120" height="20" rx="5" fill="#5fd4c2" fill-opacity=".5"/>
+<circle cx="352" cy="169" r="4.5" fill="#0b6b61"/>
+<rect x="364" y="166.5" width="70" height="5" rx="2.5" fill="#132a27" fill-opacity=".55"/>
+<rect x="364" y="195.5" width="76" height="5" rx="2.5" fill="#132a27" fill-opacity=".15"/>
+<line x1="346" y1="198" x2="448" y2="198" stroke="#132a27" stroke-opacity=".45" stroke-width="1.8"/>
+<circle cx="352" cy="227" r="4" fill="#132a27" fill-opacity=".3"/>
+<rect x="364" y="224.5" width="62" height="5" rx="2.5" fill="#132a27" fill-opacity=".35"/>
+<circle cx="352" cy="256" r="4" fill="#132a27" fill-opacity=".3"/>
+<rect x="364" y="253.5" width="80" height="5" rx="2.5" fill="#132a27" fill-opacity=".35"/>
+<path class="line" d="M474,200 H572"/><path class="flow" d="M474,200 H572"/>
+<rect x="596" y="136" width="108" height="62" rx="4" fill="#f3eee2" fill-opacity=".92"/>
+<rect x="610" y="148" width="78" height="5" rx="2.5" fill="#0b6b61" fill-opacity=".8"/>
+<rect x="610" y="161" width="64" height="5" rx="2.5" fill="#0b6b61" fill-opacity=".8"/>
+<rect x="610" y="174" width="84" height="5" rx="2.5" fill="#132a27" fill-opacity=".35"/>
+<path d="M580,186 h140 v78 a6,6 0 0 1 -6,6 h-128 a6,6 0 0 1 -6,-6 z" fill="#f3eee2"/>
+<path d="M580,190 L650,238 L720,190" fill="none" stroke="#132a27" stroke-opacity=".35" stroke-width="2" stroke-linejoin="round"/>
+<circle cx="716" cy="182" r="11" fill="#5fd4c2"/>
+<circle class="pulse" cx="716" cy="182" r="11" fill="none" stroke="#5fd4c2" stroke-width="2"/>
+<path class="line" d="M650,276 V330 H150 V292"/><path class="flow" d="M650,276 V330 H150 V292" marker-end="url(#arrow)"/><rect x="270.0" y="320" width="260" height="20" fill="#132a27"/><text class="cap" x="400" y="335" text-anchor="middle">WEEKLY · ONLY NEW ITEMS</text>
+</g>
+
+<line class="div" x1="275" y1="408" x2="275" y2="446"/>
+<line class="div" x1="525" y1="408" x2="525" y2="446"/>
+<text class="lbl" x="150" y="436" text-anchor="middle">SCRAPE</text>
+<text class="lbl" x="400" y="436" text-anchor="middle">FILTER</text>
+<text class="lbl" x="650" y="436" text-anchor="middle">DIGEST</text>
+
+</svg>
