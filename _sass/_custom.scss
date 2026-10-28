@@ -571,3 +571,30 @@ footer.fixed-bottom {
 @media (max-width: 575.98px) {
   .profile.float-right { float: none !important; max-width: 240px; margin: 0 auto 1rem; }
 }
+
+/* ---------------------------------------------------------------------------
+ * Publications page
+ * ------------------------------------------------------------------------- */
+
+// Publications page: year headings as small mono labels (like the section numbers),
+// with no second line under the page header for the first year.
+.publications h2.bibliography {
+  margin-top: 2.25rem;
+  padding-top: 0.9rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-align: left;
+  color: var(--global-theme-color);
+}
+
+.post > article > .publications:first-child {
+  margin-top: 0;
+
+  > h2.bibliography:first-child {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
+  }
+}
