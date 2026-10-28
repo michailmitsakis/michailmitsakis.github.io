@@ -43,7 +43,7 @@ Alongside that, in my free time I have been diving deeper into the latest resear
 
 One lesson I have found that holds along all these projects: it's important to do the upfront work on **uncertainty awareness** and **reproducibility** first, before optimizing and diving into the experimental workflow. Electrochemical experiments especially are notoriously difficult to replicate due to the field's heavy reliance on customized apparatus, inconsistent reporting parameters, and high sensitivity to minor variations in experimental conditions. For example, the thesis data showed large systematic errors in temperature, so when I rebuilt the loop in Ax I replaced it with pH to avoid confusing the optimizer. I have tried to bring the same habit to my AI tools by building my projects around simplicity, validation and evaluation as the main throughlines.
 
-At the moment, I'm actively looking for **an industry-aligne PhD or an applied/research role in AI for materials science and manufacturing**, and aiming to help solve the world's hardest problems.
+At the moment, I'm actively looking for **an industry-aligned PhD or an applied/research role in AI for materials science and manufacturing**, and aiming to help solve the world's hardest problems.
 
 You can find takeaways from my readings, research and [projects](/projects/) in [writing](/blog/).
 
