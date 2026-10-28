@@ -2,7 +2,7 @@
 layout: page
 title: BayBE one more time
 description: Hackathon project (3rd place) — Bayesian optimisation with BayBE to screen small-molecule corrosion inhibitors for aluminium alloys, including transfer learning between alloys.
-img: aassets/img/projects/diagram-baybe-corrosion-inhibitors.svg
+img: assets/img/projects/diagram-baybe-corrosion-inhibitors.svg
 importance: 3
 category: work
 github: https://github.com/michailmitsakis/baybe_project-surface-science-syndicate

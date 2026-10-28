@@ -2,7 +2,7 @@
 layout: page
 title: tender-feed
 description: A scheduled monitor for public tenders and funding calls, with keyword prioritisation and weekly email digests.
-img: assets/img/projects/tender-watch.png
+img: aassets/img/projects/diagram-tender-feed.svg
 importance: 7
 category: consulting tools
 permalink: /projects/tender-feed/
