@@ -182,6 +182,43 @@ article li {
   max-width: 46rem;
 }
 
+// Section pages in the navbar (projects, publications, repositories, CV) get a
+// teal title, like the writing page. Single projects, posts and the name on the
+// About page keep the text colour. Each page is recognised by its content block.
+.post:has(> article .projects, > article .repositories, .cv) .post-title,
+.post:not(:has(.profile)):has(> article > .publications) .post-title {
+  color: var(--global-theme-color);
+}
+
+// Writing page: same header as the other section pages (left-aligned, same
+// title size, muted one-line description) instead of the centred banner.
+.header-bar {
+  margin-bottom: 2rem;
+  padding-top: 0;
+  padding-bottom: 1.5rem;
+  text-align: left;
+
+  h1 {
+    margin-bottom: 0.5rem;
+    font-family: var(--font-display);
+    font-size: 3.1rem;
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+    color: var(--global-theme-color);
+  }
+
+  h2 {
+    margin: 0;
+    max-width: 46rem;
+    font-family: var(--font-body);
+    font-size: 1.15rem;
+    font-weight: 400;
+    line-height: 1.55;
+    color: var(--global-text-color-light);
+  }
+}
+
 // Reusable pieces for the About page and project pages (steps 4–8).
 .kicker {
   margin: 0 0 0.5rem;
