@@ -49,4 +49,4 @@ A **Scribe** writes predictions back into the graph, so later campaigns start fr
 
 **Stack:** PyTorch Geometric · MACE · BoTorch/Ax · pydantic-ai · Ollama · NetworkX · MLflow
 
-**Limitations**, stated plainly: the "expensive experiment" step is simulated. The pipeline selects for stability and surrogate confidence, not catalytic activity, and it predicts no adsorption energies or overpotentials. The full discussion is in the [README](https://github.com/michailmitsakis/catalyst-kg-agent#limitations).
+**Limitations**: the "expensive experiment" step is simulated. The pipeline selects for stability and surrogate confidence, not catalytic activity, and it predicts no adsorption energies or overpotentials. The full discussion is in the [README](https://github.com/michailmitsakis/catalyst-kg-agent#limitations).

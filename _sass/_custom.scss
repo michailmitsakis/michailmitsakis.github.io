@@ -114,29 +114,87 @@ article li {
   }
 }
 
-// Section labels on the about page (news, latest posts, selected publications):
-// small monospace caps with a hairline, instead of full-size headings.
-.post > article > h2 {
-  display: flex;
-  align-items: center;
-  gap: 0.9rem;
-  margin-top: 2.75rem;
-  margin-bottom: 0.75rem;
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+// Section headings on pages (projects, about, repositories): a numbered
+// mono kicker ("01", or "01 / the problem") above a serif heading, with a hairline.
+// Numbers come from a CSS counter, so headings need no editing. For a
+// labelled kicker, put {: data-kicker="the problem"} on the line after
+// the heading. *Italic* text inside a heading turns muted.
+.post > article {
+  counter-reset: section;
+}
 
-  a {
-    color: var(--global-theme-color) !important;
+.post > article > h2 {
+  counter-increment: section;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--global-divider-color);
+  font-family: var(--font-display);
+  font-size: clamp(1.55rem, 3.6vw, 1.95rem);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+
+  &::before {
+    content: counter(section, decimal-leading-zero);
+    display: block;
+    margin-bottom: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--global-theme-color);
   }
 
-  &::after {
-    content: "";
-    flex: 1 1 auto;
-    height: 1px;
-    background: var(--global-divider-color);
+  &[data-kicker]::before {
+    content: counter(section, decimal-leading-zero) " / " attr(data-kicker);
+  }
+
+  em {
+    font-style: italic;
+    color: var(--global-text-color-light);
+  }
+
+  a {
+    color: inherit !important;
+  }
+}
+
+// About page: the gem writes these headings in lower case ("selected publications").
+.post > article:has(> .clearfix) > h2 {
+  text-transform: capitalize;
+}
+
+// Page lede: the description under a page title reads as a subtitle.
+.post-header .post-description {
+  font-size: 1.15rem;
+  line-height: 1.55;
+  max-width: 46rem;
+}
+
+// Reusable pieces for the About page and project pages (steps 4–8).
+.kicker {
+  margin: 0 0 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--global-theme-color);
+}
+
+.display {
+  margin: 0 0 1rem;
+  font-family: var(--font-display);
+  font-size: clamp(2.1rem, 6vw, 3.3rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+
+  em {
+    font-style: italic;
+    color: var(--global-text-color-light);
   }
 }
 
