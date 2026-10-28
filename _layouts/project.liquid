@@ -1,0 +1,82 @@
+---
+layout: default
+---
+{% comment %}
+  Project pages. Same as al_folio_core 1.0.15 _layouts/page.liquid, plus two blocks
+  under the page header, both built from optional front matter:
+    status, github, links (list of label + url), event      -> one row of pill and links
+    stack (list), stands, team (+ team_label)                -> the "at a glance" panel
+  Use it with `layout: project` in a project's front matter.
+{% endcomment %}
+{% if page._styles %}
+  <!-- Page/Post style -->
+  <style type="text/css">
+    {{ page._styles }}
+  </style>
+{% endif %}
+
+<div class="post">
+  <header class="post-header">
+    <h1 class="post-title">{{ page.title }}</h1>
+    <p class="post-description">{{ page.description }}</p>
+  </header>
+
+  {% if page.status or page.github or page.links or page.event %}
+    <div class="project-meta">
+      {% if page.status %}
+        <span class="status-pill">{{ page.status }}</span>
+      {% endif %}
+      {% if page.github %}
+        <a href="{{ page.github }}"><i class="fa-brands fa-github"></i> GitHub ↗</a>
+      {% endif %}
+      {% for link in page.links %}
+        <a href="{{ link.url }}">{{ link.label }} ↗</a>
+      {% endfor %}
+      {% if page.event %}
+        <span class="project-event">{{ page.event }}</span>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  {% if page.stack or page.stands or page.team %}
+    <aside class="project-facts">
+      {% if page.stack %}
+        <div>
+          <p class="kicker">built with</p>
+          <ul>
+            {% for item in page.stack %}
+              <li>{{ item }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+      {% if page.stands %}
+        <div>
+          <p class="kicker">where it stands</p>
+          <p>{{ page.stands }}</p>
+        </div>
+      {% endif %}
+      {% if page.team %}
+        <div>
+          <p class="kicker">{{ page.team_label | default: 'team' }}</p>
+          <p>{{ page.team }}</p>
+        </div>
+      {% endif %}
+    </aside>
+  {% endif %}
+
+  <article>
+    {{ content }}
+  </article>
+
+  {% if page.related_publications %}
+    <h2>References</h2>
+    <div class="publications">
+      {% bibliography --cited_in_order %}
+    </div>
+  {% endif %}
+
+  {% if site.plugins contains 'al_comments' %}
+    {% include plugins/al_comments.liquid %}
+  {% endif %}
+</div>

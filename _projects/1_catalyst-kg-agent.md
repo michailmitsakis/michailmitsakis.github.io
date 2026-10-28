@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: project
 title: catalyst-kg-agent
 description: Knowledge-graph-grounded, cost-aware multi-agent system for choosing the cheapest sufficient next step in a materials-discovery campaign.
 status: "working demo"
@@ -9,11 +9,14 @@ importance: 1
 category: work
 github: https://github.com/michailmitsakis/catalyst-kg-agent
 permalink: /projects/catalyst-kg-agent/
+stack: [PyTorch Geometric, MACE, BoTorch/Ax, pydantic-ai, Ollama, NetworkX, MLflow]
+stands: Working demo. The expensive step is still simulated, and candidates are selected for stability and surrogate confidence, not catalytic activity.
 ---
 
-**Code:** [github.com/michailmitsakis/catalyst-kg-agent](https://github.com/michailmitsakis/catalyst-kg-agent) · **Status:** working demo
-
 {% include figure.liquid loading="eager" path="assets/img/projects/diagram-catalyst-kg-agent.svg" alt="Retrieve candidates from the knowledge graph, predict with MACE, gate expensive steps" class="img-fluid rounded z-depth-1" %}
+
+## Why build this?
+{: data-kicker="the problem"}
 
 Self-driving labs face the same decision at every step: given a target property and a limited budget, should the next move be a cheap database lookup, a fast machine-learned surrogate estimate, or an expensive high-fidelity experiment? Get it wrong and the budget goes on redundant expensive steps, or an unreliable surrogate result gets trusted without a check.
 
@@ -26,6 +29,7 @@ This project is a small version of that decision system that runs on a local mac
 The graph covers 189 materials across 27 chemical systems. These include HER-relevant transition-metal phosphides, sulfides, and carbides, and OER-relevant oxides, with Pt and Ir–O as benchmarks.
 
 ## How it works
+{: data-kicker="the approach"}
 
 A **Planner** (an LLM) orders the candidates. A **Retriever** queries the knowledge graph, and a **Predictor** scores candidates with MACE. Before any escalation, a **Critic** has to approve it using two independent checks:
 
@@ -44,11 +48,13 @@ A **Scribe** writes predictions back into the graph, so later campaigns start fr
 </div>
 
 ## Selected results
+{: data-kicker="what I found"}
 
 - **Surrogate accuracy.** Zero-shot MACE reaches a formation-energy MAE of **0.114 eV/atom on non-oxides**. On oxides its error is systematically offset by about 1 eV/atom. This points to an energy-correction mismatch in the reference data rather than a uniform inaccuracy, and the README traces it.
 - **Honest baselines.** The CGCNN baseline is evaluated with **composition-disjoint cross-validation** as well as a random split. 69% of materials share a formula with another entry, so a random split leaks polymorphs of the same composition across folds.
 - **The graph accumulates across campaigns.** Over three budgeted campaigns, later runs skipped 19 and then 36 materials that were already scored. A targeted query (_"Find stable Ni–P HER catalysts"_) finished with more than three-quarters of its budget unspent and selected **Ni₂P**.
 
-**Stack:** PyTorch Geometric · MACE · BoTorch/Ax · pydantic-ai · Ollama · NetworkX · MLflow
+## What it doesn't do
+{: data-kicker="limits"}
 
-**Limitations**: the "expensive experiment" step is simulated. The pipeline selects for stability and surrogate confidence, not catalytic activity, and it predicts no adsorption energies or overpotentials. The full discussion is in the [README](https://github.com/michailmitsakis/catalyst-kg-agent#limitations).
+The "expensive experiment" step is simulated. The pipeline selects for stability and surrogate confidence, not catalytic activity, and it predicts no adsorption energies or overpotentials. The full discussion is in the [README](https://github.com/michailmitsakis/catalyst-kg-agent#limitations).

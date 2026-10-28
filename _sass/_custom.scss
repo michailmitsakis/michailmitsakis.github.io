@@ -438,6 +438,93 @@ footer.fixed-bottom {
 }
 
 /* ---------------------------------------------------------------------------
+ * Project pages (_layouts/project.liquid): status and links row, then an
+ * "at a glance" panel with the stack, where the project stands, and the team.
+ * ------------------------------------------------------------------------- */
+
+.project-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1.1rem;
+  margin: -0.75rem 0 1.25rem;
+  font-size: 0.92rem;
+
+  a {
+    font-weight: 500;
+  }
+
+  .project-event {
+    margin-left: auto;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+    color: var(--global-text-color-light);
+  }
+}
+
+.status-pill {
+  display: inline-block;
+  padding: 0.1rem 0.6rem;
+  border: 1px solid var(--global-divider-color);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--global-text-color-light);
+}
+
+.project-facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.1rem 1.75rem;
+  margin: 0 0 2rem;
+  padding: 1rem 1.25rem 1.1rem;
+  border: 1px solid var(--global-divider-color);
+  border-radius: 10px;
+  background: var(--global-card-bg-color);
+
+  .kicker {
+    margin-bottom: 0.45rem;
+  }
+
+  p:not(.kicker) {
+    margin: 0;
+    font-size: 0.88rem;
+    line-height: 1.55;
+    color: var(--global-text-color-light);
+  }
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    padding: 0.12rem 0.5rem;
+    border-radius: 6px;
+    background: var(--site-chip);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    line-height: 1.6;
+    color: var(--global-text-color);
+  }
+}
+
+@media (max-width: 575.98px) {
+  .project-meta .project-event {
+    flex-basis: 100%;
+    margin-left: 0;
+  }
+}
+
+
+/* ---------------------------------------------------------------------------
  * CV page
  * ------------------------------------------------------------------------- */
 

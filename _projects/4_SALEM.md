@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: project
 title: SALEM
 description: Self-improving agentic loops that score LLM-extracted literature features against a measured property, here the PL peak of hybrid perovskites.
 status: "OSI hackathon · 2026"
@@ -9,17 +9,23 @@ importance: 4
 category: work
 github: https://github.com/zakidotai/kg_osi_26
 permalink: /projects/salem/
+event: Open Scientific Intelligence (OSI) Hackathon · October 2026
+stack: [MatSciBERT, GPyTorch, BM25 + dense hybrid search]
+stands: Two-day hackathon prototype. The scoring and pruning loop works; accepting a change needs paired, multi-seed cross-validation to beat the noise.
+team: Sven Voigt, Defne Circi, Xiaoquan Liu, Mohd Zaki, Zhanzhao Li, Eltjo Mante, Michalis Mitsakis
 ---
-
-**Code:** [github.com/zakidotai/kg_osi_26](https://github.com/zakidotai/kg_osi_26) · **Event:** Open Scientific Intelligence (OSI) Hackathon, October 2026 · **Team:** SALEM (Sven Voigt, Defne Circi, Xiaoquan Liu, Mohd Zaki, Zhanzhao Li, Eltjo Mante, Michalis Mitsakis)
 
 {% include figure.liquid loading="eager" path="assets/img/projects/diagram-salem.svg" alt="Extract questions, score them with a GP, prune and rewrite" class="img-fluid rounded z-depth-1" %}
 
 **SALEM** (**S**elf-improving **A**gentic **L**oops: LLM-**E**xtracted features for **M**aterials Property Prediction) gives literature-mining AI agents a way to check their own work. A Gaussian process (GP) predicts a trusted measured property, here the photoluminescence (PL) peak of hybrid perovskites, from what the agent extracts. The agent then keeps rewriting its questions and database queries to lower that prediction error, in a self-improving loop.
 
-The problem it addresses: knowledge graphs built by AI agents rarely come with ground truth, so nothing tells the agent whether its extractions are any good, and it has nothing to improve against. SALEM borrows one trusted value per record, the curated PL peak, and turns the GP's held-out error into a score the agent can minimize.
+## Extraction without ground truth
+{: data-kicker="the problem"}
+
+Knowledge graphs built by AI agents rarely come with ground truth, so nothing tells the agent whether its extractions are any good, and it has nothing to improve against. SALEM borrows one trusted value per record, the curated PL peak, and turns the GP's held-out error into a score the agent can minimize.
 
 ## How it works
+{: data-kicker="the approach"}
 
 - **Hybrid search:** HybriD³ records (formula, synthesis and experimental text, PL peak) are indexed, and a combined dense-embedding and BM25 ranking retrieves the relevant ones.
 - **Agentic questions:** an agent breaks a synthesis down into targeted questions: which metal, which solute, what temperature, how long, and so on.
@@ -28,6 +34,7 @@ The problem it addresses: knowledge graphs built by AI agents rarely come with g
 - **Agentic loop:** switching questions on and off gives error gradients. The agent drops, rewrites and adds questions, keeps only the changes that beat the noise, and chooses database queries the same way.
 
 ## What we found
+{: data-kicker="what we found"}
 
 - **Fewer, sharper questions win.** The metal question alone cut the error from 98.5 to 86.9 nm. Adding the other nine one by one ended at 91.7 nm, worse than metal alone. So the loop has to prune questions, not just accumulate them.
 
@@ -68,7 +75,5 @@ The problem it addresses: knowledge graphs built by AI agents rarely come with g
 - **Noise sets the bar.** A single cross-validation split can move the score by up to 15 nm, and changes under about 3 nm are noise. Accepting a change therefore needs paired, multi-seed cross-validation.
 
 **The main lesson**: extraction quality can be scored without hand-labelled ground truth, as long as there is one trusted measured property to predict. The score is noisy, though, so each change has to beat seed-to-seed variation before the agent keeps it.
-
-**Stack:** MatSciBERT · GPyTorch 
 
 **Data:** [HybriD³ materials database](https://hybrid3.duke.edu/research/materials-database), Duke University.

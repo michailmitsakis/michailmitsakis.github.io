@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: project
 title: notion-second-brain
 description: A fully local RAG agent over a Notion workspace — hybrid retrieval, reranking, persistent memory, and an evaluation harness.
 status: "working tool"
@@ -9,9 +9,9 @@ importance: 5
 category: work
 github: https://github.com/michailmitsakis/notion-second-brain
 permalink: /projects/notion-second-brain/
+stack: [pydantic-ai, Ollama, Qdrant, marker, Streamlit, Docker, Arize Phoenix]
+stands: In personal use. Tuned for a single machine with a 12 GB GPU; nothing leaves it.
 ---
-
-**Code:** [github.com/michailmitsakis/notion-second-brain](https://github.com/michailmitsakis/notion-second-brain)
 
 {% include figure.liquid loading="eager" path="assets/img/projects/diagram-notion-second-brain.svg" alt="Hybrid retrieval, reranking and rubric evaluation, all on one machine" class="img-fluid rounded z-depth-1" %}
 
@@ -27,13 +27,12 @@ I keep my notes and research in Notion. I wanted to summarize and query them wit
 </div>
 
 ## What's in it
+{: data-kicker="the approach"}
 
 - **Hybrid retrieval.** Dense embeddings and sparse BM25 are combined with reciprocal-rank fusion, and results are then reranked by a cross-encoder.
 - **Ingestion.** Notion exports are converted to markdown, and PDFs and images go through OCR. Chunking is sentence-aware and keeps code blocks and tables intact.
 - **Memory.** File-based per-session and long-term memory is injected into the agent at runtime.
 - **Evaluation.** An evaluation harness scores answers against a four-criterion anchored rubric.
 - **Observability.** Tracing through Arize Phoenix is optional.
-
-**Stack:** pydantic-ai · Ollama · Qdrant · marker · Streamlit · Docker. It is tuned for a single 12 GB-VRAM machine.
 
 The same concerns drive my materials work: retrieval that can be checked, evaluation you can trust, and nothing that depends on a service you don't control.

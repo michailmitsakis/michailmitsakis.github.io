@@ -2,7 +2,7 @@
 layout: page
 permalink: /publications/
 title: publications
-description: publications in reversed chronological order.
+description: Publications in reverse chronological order.
 nav: true # turn on once _bibliography/papers.bib has real entries
 nav_order: 2
 ---

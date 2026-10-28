@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: project
 title: MSc Thesis
 description: Machine learning-driven optimization of electrodeposited Ni-W electrocatalysts for H2 evolution in alkaline electrolysis cells
 status: "MSc thesis · 2023"
@@ -9,18 +9,22 @@ importance: 2
 category: work
 github: https://github.com/michailmitsakis/Ax_bayes_opt_NiW
 permalink: /projects/msc-thesis/
+event: MSc Engineering – Physics & Nanotechnology · DTU Energy · 2023
+stack: [Dragonfly (thesis), Ax 1.3, BoTorch, BayBE, pandas, matplotlib, pytest]
+stands: Thesis complete. The Ax rebuild has 10 lab measurements so far, and none of its suggestions has been measured yet.
+team_label: supervisors
+team: Christodoulos Chatzichristodoulou, Jinhyun Chang, Pradipkumar Manubhai Leuaa, Gastón Larrazábal
 ---
 
-**MSc Engineering – Physics & Nanotechnology** · DTU Energy · 2023 · Supervisors: Christodoulos Chatzichristodoulou, Jinhyun Chang, Pradipkumar Manubhai Leuaa, Gastón Larrazábal
-
-**Code:** [github.com/michailmitsakis/Ax_bayes_opt_NiW](https://github.com/michailmitsakis/Ax_bayes_opt_NiW) · 
-
 {% include figure.liquid loading="eager" path="assets/img/projects/diagram-msc-thesis.svg" alt="Deposit Ni-W electrodes, measure activity and stability, refit the GPs and propose the next recipes" class="img-fluid rounded z-depth-1" %}
+
+## Why optimise electrodeposition?
+{: data-kicker="the problem"}
 
 Electrodeposition is a cheap, scalable way to make electrocatalysts. The performance of the produced catalyst, however, depends on a large set of coupled
 parameters: bath composition, current density, deposition time and temperature. My thesis explored how to choose those parameters to improve **hydrogen evolution
 reaction (HER)** performance, using multi-objective Bayesian optimization (BO) to trade off activity against stability. After graduating I rebuilt the same
-loop in [Ax](https://ax.dev/) (built on [BoTorch]()), described [below](#rebuilding-the-workflow-in-ax).
+loop in [Ax](https://ax.dev/) (built on [BoTorch](https://botorch.org/)), described [below](#rebuilding-the-workflow-in-ax).
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
@@ -31,7 +35,8 @@ loop in [Ax](https://ax.dev/) (built on [BoTorch]()), described [below](#rebuild
     The closed loop used in the thesis: deposit a batch of Ni-W electrodes, measure activity and stability, refit one Gaussian process per objective, and let a multi-objective acquisition function choose the next recipes. About 30 electrodes were made over the thesis. Note: In the thesis the four parameters were tungstate concentration, current density, deposition time and temperature, with pH fixed at ~9. The Ax rebuild swapped temperature for pH, as shown.
 </div>
 
-## Approach
+## In the lab and in the loop
+{: data-kicker="the approach"}
 
 - Worked in wet-lab environment, using equipment related to: catalyst sample preparation (cutter, metallic press, sonication) and deposition bath mixing
   (chemical weighing and mixing, pH testing).
@@ -44,6 +49,7 @@ loop in [Ax](https://ax.dev/) (built on [BoTorch]()), described [below](#rebuild
   systematic errors between measurements, which would only have confused the optimizer.
 
 ## Thesis findings
+{: data-kicker="what I found"}
 
 - **NiW beats bare Ni foam**: NiW electrodes outperformed pure Ni foam for HER.
 - **Tungstate concentration matters**: all top electrodes were deposited at 0.1 M tungstate, and they tended to activate rather than degrade during cycling.
@@ -54,6 +60,7 @@ loop in [Ax](https://ax.dev/) (built on [BoTorch]()), described [below](#rebuild
   avoids costly random exploration.
 
 ## Rebuilding the workflow in Ax
+{: data-kicker="follow-up"}
 
 After the thesis I rebuilt the loop as a small, tested Python package around Ax 1.3. Each round, Ax proposes a batch of three recipes; they are run in the
 lab, the results go into a CSV, and the loop repeats. The CSV is the record of the campaign: the notebook rebuilds the Ax experiment from it every session,
@@ -119,9 +126,8 @@ The model gives tungstate concentration almost no weight. That sits awkwardly ne
     Hypervolume (the area the measured Pareto front dominates, relative to the thresholds) after each trial. Trials 0–9 are lab measurements; trials 10–15 (orange and green bands, dashed line) are recipes Ax actually suggested, completed with illustrative values to show what a few rounds look like.
 </div>
 
-**Stack:** Ax 1.3 · BoTorch · BayBE · Dragonfly (thesis) · pandas · matplotlib · pytest
-
 ## Limitations
+{: data-kicker="limits"}
 
 - **No Ax suggestion has been measured yet.** There is no evidence so far that the optimizer beats the hand-picked initial design; the illustrative rows
   only demonstrate the mechanics.
@@ -139,9 +145,10 @@ The full list, including Ax version pinning and the BayBE comparison setup, is i
 [README](https://github.com/michailmitsakis/Ax_bayes_opt_NiW#limitations).
 
 ## What carried over
+{: data-kicker="takeaway"}
 
 Most of my later work grew out of this thesis: I experienced first-hand how painstakingly accurate manual experiments need to be, and as such laborious and
 expensive, especially under strict budget and time limitations. Therefore, deciding where to query the parameter space next to minimize the number of
 experiments and achieve the optimal set of parameters is a critical problem. At the same time, the large variance in experimental setups and difficulty of
-achieving reproducibility is a well-known in the field. These factors led me to exploring how materials informatics techniques can accelerate and even
+achieving reproducibility are well known in the field. These factors led me to exploring how materials informatics techniques can accelerate and even
 automate this process.

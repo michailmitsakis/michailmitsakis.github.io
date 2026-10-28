@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: project
 title: CaMEL-RAG
 description: A retrieval-augmented LLM that answers natural-language questions about catalyst adsorption energies, grounded in Open Catalyst data.
 status: "hackathon · 2025"
@@ -9,11 +9,18 @@ importance: 6
 category: work
 github: https://github.com/michailmitsakis/CaMEL-RAG
 permalink: /projects/camel-rag/
+links:
+  - { label: Paper, url: "https://arxiv.org/abs/2605.03205" }
+event: 2025 LLM Hackathon for Applications in Materials Science & Chemistry
+stack: [Python, FAISS, sentence-transformers, OpenAI API, pandas, Jupyter]
+stands: Hackathon prototype. Grounding works on in-index queries; held-out and out-of-distribution queries are untested.
+team: Code4Catalysis-KFUPM (Montassar Bouzidi, Nur Allif Fathurrahman, A. B. M. Ashikur Rahman, Tasnim Ahmed, Michail Mitsakis)
 ---
 
-**Code:** [GitHub](https://github.com/michailmitsakis/CaMEL-RAG) · **Event:** [2025 LLM Hackathon for Applications in Materials Science & Chemistry](https://arxiv.org/abs/2605.03205) · **Team:** Code4Catalysis-KFUPM (Montassar Bouzidi, Nur Allif Fathurrahman, A. B. M. Ashikur Rahman, Tasnim Ahmed, Michail Mitsakis)
-
 {% include figure.liquid loading="eager" path="assets/img/projects/diagram-camel-rag.svg" alt="Retrieve Open Catalyst records, answer with citations, check against DFT" class="img-fluid rounded z-depth-1" %}
+
+## Asking a DFT database a question
+{: data-kicker="the problem"}
 
 Catalyst-screening datasets such as Open Catalyst hold millions of DFT results, but a researcher can't simply ask them a question. Our idea for the hackathon was a natural-language front end: ask about an adsorbate on a surface and get back a number traceable to the underlying calculation, rather than a fluent guess.
 
@@ -27,6 +34,7 @@ Catalyst-screening datasets such as Open Catalyst hold millions of DFT results, 
 </div>
 
 ## How it works
+{: data-kicker="the approach"}
 
 - **Knowledge base:** records from an Open Catalyst-derived table (adsorption energies, descriptors and structure metadata) are embedded with `all-MiniLM-L6-v2` sentence-transformer embeddings and indexed in FAISS.
 - **Retrieval:** each question retrieves its top-_k_ records. They are inserted into the prompt with `[#doc_id]` tags, so every answer cites the records it came from.
@@ -42,9 +50,9 @@ Catalyst-screening datasets such as Open Catalyst hold millions of DFT results, 
 </div>
 
 ## Results
+{: data-kicker="what we found"}
 
 On 500 test queries, the returned adsorption energies matched the DFT values exactly (R² = 1.00). These queries ask about records that are **in the index**, so the test shows that retrieval and grounding work: the model reports the stored number instead of making one up. It does **not** show that the model can predict energies for systems it hasn't seen. The obvious next step is an evaluation on held-out and near-duplicate queries, and detecting out-of-distribution requests.
 
 The hackathon's outcomes, including this project, are summarized in the [event paper on arXiv](https://arxiv.org/abs/2605.03205).
 
-**Stack:** Python · FAISS · sentence-transformers · OpenAI API · pandas · Jupyter
