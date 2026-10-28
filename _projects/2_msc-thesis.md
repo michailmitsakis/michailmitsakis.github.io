@@ -2,7 +2,7 @@
 layout: page
 title: MSc Thesis
 description: Machine learning-driven optimization of electrodeposited Ni-W electrocatalysts for H2 evolution in alkaline electrolysis cells
-img: assets/img/projects/thesis-loop.png
+img: assets/img/projects/diagram-msc-thesis.svg
 importance: 2
 category: work
 github: https://github.com/michailmitsakis/Ax_bayes_opt_NiW
@@ -12,6 +12,8 @@ permalink: /projects/msc-thesis/
 **MSc Engineering – Physics & Nanotechnology** · DTU Energy · 2023 · Supervisors: Christodoulos Chatzichristodoulou, Jinhyun Chang, Pradipkumar Manubhai Leuaa, Gastón Larrazábal
 
 **Code:** [github.com/michailmitsakis/Ax_bayes_opt_NiW](https://github.com/michailmitsakis/Ax_bayes_opt_NiW) · 
+
+{% include figure.liquid loading="eager" path="assets/img/projects/diagram-msc-thesis.svg" alt="Deposit Ni-W electrodes, measure activity and stability, refit the GPs and propose the next recipes" class="img-fluid rounded z-depth-1" %}
 
 Electrodeposition is a cheap, scalable way to make electrocatalysts. The performance of the produced catalyst, however, depends on a large set of coupled
 parameters: bath composition, current density, deposition time and temperature. My thesis explored how to choose those parameters to improve **hydrogen evolution

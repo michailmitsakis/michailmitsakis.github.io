@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" role="img" aria-label="MSc thesis loop: electrodeposit Ni-W electrodes, measure activity and stability, refit the Gaussian processes and propose the next batch">
+<title>MSc thesis loop: electrodeposit Ni-W electrodes, measure activity and stability, refit the Gaussian processes and propose the next batch</title>
+
+<style>
+  .line { stroke: #f3eee2; stroke-opacity: .35; stroke-width: 2; fill: none; }
+  .flow { stroke: #5fd4c2; stroke-width: 2.5; fill: none; stroke-dasharray: 6 10;
+           stroke-linecap: round; animation: flow 1.6s linear infinite; }
+  .lbl  { font: 500 24px 'IBM Plex Mono', Consolas, Menlo, 'DejaVu Sans Mono', monospace;
+           letter-spacing: .14em; fill: #c9d6d1; }
+  .cap  { font: 500 15px 'IBM Plex Mono', Consolas, Menlo, 'DejaVu Sans Mono', monospace;
+           letter-spacing: .12em; fill: #5fd4c2; }
+  .div  { stroke: #f3eee2; stroke-opacity: .3; stroke-width: 1.5; }
+  .draw { stroke-dasharray: 100; animation: draw 6s ease-in-out infinite; }
+  .rise { animation: rise 3s ease-in infinite; }
+  .pulse { transform-box: fill-box; transform-origin: center; animation: pulse 2.4s ease-out infinite; }
+  .blink { animation: blink 4.8s ease-in-out infinite; }
+  @keyframes flow  { to { stroke-dashoffset: -32; } }
+  @keyframes draw  { 0% { stroke-dashoffset: 100; } 55%, 100% { stroke-dashoffset: 0; } }
+  @keyframes rise  { 0% { transform: translateY(0); opacity: 0; } 15% { opacity: 1; }
+                      100% { transform: translateY(-62px); opacity: 0; } }
+  @keyframes pulse { 0% { transform: scale(.6); opacity: 1; } 100% { transform: scale(1.9); opacity: 0; } }
+  @keyframes blink { 0%, 40% { opacity: 1; } 55%, 85% { opacity: .25; } 100% { opacity: 1; } }
+  @media (prefers-reduced-motion: reduce) {
+    .flow, .draw, .rise, .pulse, .blink { animation: none; }
+    .draw { stroke-dashoffset: 0; }
+    .rise { opacity: .8; }
+  }
+</style>
+
+<defs>
+  <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse">
+    <circle cx="2" cy="2" r="1.2" fill="#f3eee2" fill-opacity=".07"/>
+  </pattern>
+  <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M1,1 L9,5 L1,9" fill="none" stroke="#5fd4c2" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+</defs>
+<rect width="800" height="500" fill="#132a27"/>
+<rect width="800" height="500" fill="url(#dots)"/>
+
+<g transform="translate(0,18)">
+<path d="M102,176 H198 V258 Q198,272 184,272 H116 Q102,272 102,258 Z" fill="#5fd4c2" fill-opacity=".2"/>
+<line x1="102" y1="176" x2="198" y2="176" stroke="#5fd4c2" stroke-opacity=".7" stroke-width="2"/>
+<path d="M94,134 H100 V258 Q100,274 116,274 H184 Q200,274 200,258 V134 H206" fill="none" stroke="#f3eee2" stroke-width="3" stroke-linejoin="round"/>
+<rect x="132" y="88" width="36" height="22" rx="4" fill="#f3eee2"/>
+<path d="M126,120 V99 H132 M174,120 V99 H168" fill="none" stroke="#f3eee2" stroke-width="2"/>
+<path d="M140,99 h6 M154,99 h6 M157,96 v6" stroke="#132a27" stroke-width="2" stroke-linecap="round"/>
+<rect x="121" y="120" width="10" height="124" rx="2" fill="#f3eee2"/>
+<rect x="117.5" y="188" width="17" height="58" rx="3" fill="#5fd4c2"/>
+<rect x="169" y="120" width="10" height="124" rx="2" fill="#f3eee2" fill-opacity=".75"/>
+<circle class="rise" style="animation-delay:0s" cx="142" cy="238" r="3.2" fill="none" stroke="#f3eee2" stroke-width="1.5"/>
+<circle class="rise" style="animation-delay:1.0s" cx="147" cy="226" r="2.4" fill="none" stroke="#f3eee2" stroke-width="1.5"/>
+<circle class="rise" style="animation-delay:2.0s" cx="140" cy="232" r="2.0" fill="none" stroke="#f3eee2" stroke-width="1.5"/>
+<path class="line" d="M214,200 H326"/><path class="flow" d="M214,200 H326"/>
+<rect x="330" y="118" width="140" height="164" rx="10" fill="#f3eee2"/>
+<path d="M346,136 V262 H456" fill="none" stroke="#132a27" stroke-opacity=".45" stroke-width="1.5"/>
+<line x1="346" y1="226" x2="456" y2="226" stroke="#132a27" stroke-opacity=".35" stroke-width="1.5" stroke-dasharray="4 4"/>
+<path d="M350.0,160.0 L351.7,167.2 L353.4,173.6 L355.1,179.3 L356.8,184.3 L358.5,188.7 L360.2,192.6 L361.9,196.0 L363.6,199.1 L365.3,201.9 L367.0,204.4 L368.7,206.7 L370.4,208.8 L372.1,210.7 L373.8,212.3 L375.5,213.6 L377.2,214.6 L378.9,215.4 L380.6,216.2 L382.3,216.8 L384.0,217.6 L385.7,218.4 L387.4,219.3 L389.1,220.1 L390.8,220.9 L392.5,221.4 L394.2,221.7 L395.9,221.7 L397.6,221.6 L399.3,221.5 L401.0,221.4 L402.7,221.6 L404.4,222.0 L406.1,222.6 L407.8,223.2 L409.5,223.8 L411.2,224.1 L412.9,224.1 L414.6,223.8 L416.3,223.3 L418.0,222.8 L419.7,222.5 L421.4,222.5 L423.1,222.8 L424.8,223.4 L426.5,224.1 L428.2,224.7 L429.9,225.0 L431.6,224.9 L433.3,224.4 L435.0,223.8 L436.7,223.1 L438.4,222.6 L440.1,222.5 L441.8,222.8 L443.5,223.5 L445.2,224.4 L446.9,225.1 L448.6,225.5 L450.3,225.4 L452.0,224.8" fill="none" stroke="#0b6b61" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="354" y="150" font-family="Georgia, serif" font-style="italic" font-size="17" fill="#132a27" fill-opacity=".65">η</text>
+<text x="452" y="254" text-anchor="end" font-family="Georgia, serif" font-style="italic" font-size="17" fill="#132a27" fill-opacity=".65">t</text>
+<path class="line" d="M474,200 H576"/><path class="flow" d="M474,200 H576"/>
+<rect x="580" y="118" width="140" height="164" rx="10" fill="#f3eee2"/>
+<path d="M596,136 V262 H706" fill="none" stroke="#132a27" stroke-opacity=".45" stroke-width="1.5"/>
+<path d="M610.0,160.0 L628.0,160.0 L628.0,172.0 L648.0,172.0 L648.0,182.0 L676.0,182.0 L676.0,214.0 L690.0,214.0 L690.0,246.0" fill="none" stroke="#0b6b61" stroke-width="2.5" stroke-linejoin="round"/>
+<circle cx="610" cy="160" r="4" fill="#132a27" fill-opacity="1"/>
+<circle cx="622" cy="196" r="4" fill="#132a27" fill-opacity="0.45"/>
+<circle cx="634" cy="222" r="4" fill="#132a27" fill-opacity="0.45"/>
+<circle cx="648" cy="182" r="4" fill="#132a27" fill-opacity="1"/>
+<circle cx="660" cy="236" r="4" fill="#132a27" fill-opacity="0.45"/>
+<circle cx="676" cy="214" r="4" fill="#132a27" fill-opacity="1"/>
+<circle cx="690" cy="246" r="4" fill="#132a27" fill-opacity="1"/>
+<circle cx="618" cy="238" r="4" fill="#132a27" fill-opacity="0.45"/>
+<circle cx="642" cy="248" r="4" fill="#132a27" fill-opacity="0.45"/>
+<circle cx="666" cy="252" r="4" fill="#132a27" fill-opacity="0.45"/>
+<circle cx="628" cy="172" r="4" fill="#132a27" fill-opacity="1"/>
+<circle cx="664" cy="158" r="6" fill="none" stroke="#0b6b61" stroke-width="2.5"/>
+<circle class="pulse" cx="664" cy="158" r="6" fill="none" stroke="#0b6b61" stroke-width="2"/>
+<path class="line" d="M650,288 V330 H150 V284"/><path class="flow" d="M650,288 V330 H150 V284" marker-end="url(#arrow)"/>
+<rect x="324" y="320" width="152" height="20" fill="#132a27"/>
+<text class="cap" x="400" y="335" text-anchor="middle">NEXT RECIPES</text>
+</g>
+
+<line class="div" x1="275" y1="408" x2="275" y2="446"/>
+<line class="div" x1="525" y1="408" x2="525" y2="446"/>
+<text class="lbl" x="150" y="436" text-anchor="middle">DEPOSIT</text>
+<text class="lbl" x="400" y="436" text-anchor="middle">MEASURE</text>
+<text class="lbl" x="650" y="436" text-anchor="middle">REFIT GP</text>
+
+</svg>

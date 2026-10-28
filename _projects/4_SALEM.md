@@ -2,7 +2,7 @@
 layout: page
 title: SALEM
 description: Hackathon project — self-improving agentic loops that score LLM-extracted literature features against a measured property, here the PL peak of hybrid perovskites.
-img: assets/img/projects/salem-cover.png
+img: assets/img/projects/diagram-salem.svg
 importance: 4
 category: work
 github: https://github.com/zakidotai/kg_osi_26
@@ -10,6 +10,8 @@ permalink: /projects/salem/
 ---
 
 **Code:** [github.com/zakidotai/kg_osi_26](https://github.com/zakidotai/kg_osi_26) · **Event:** Open Scientific Intelligence (OSI) Hackathon, October 2026 · **Team:** SALEM (Sven Voigt, Defne Circi, Xiaoquan Liu, Mohd Zaki, Zhanzhao Li, Eltjo Mante, Michalis Mitsakis)
+
+{% include figure.liquid loading="eager" path="assets/img/projects/diagram-salem.svg" alt="Extract questions, score them with a GP, prune and rewrite" class="img-fluid rounded z-depth-1" %}
 
 **SALEM** (**S**elf-improving **A**gentic **L**oops: LLM-**E**xtracted features for **M**aterials Property Prediction) gives literature-mining AI agents a way to check their own work. A Gaussian process (GP) predicts a trusted measured property, here the photoluminescence (PL) peak of hybrid perovskites, from what the agent extracts. The agent then keeps rewriting its questions and database queries to lower that prediction error, in a self-improving loop.
 

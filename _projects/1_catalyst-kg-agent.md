@@ -2,7 +2,7 @@
 layout: page
 title: catalyst-kg-agent
 description: Knowledge-graph-grounded, cost-aware multi-agent system for choosing the cheapest sufficient next step in a materials-discovery campaign.
-img: assets/img/projects/catalyst-kg-agent.png
+img: assets/img/projects/diagram-catalyst-kg-agent.svg
 importance: 1
 category: work
 github: https://github.com/michailmitsakis/catalyst-kg-agent
@@ -10,6 +10,8 @@ permalink: /projects/catalyst-kg-agent/
 ---
 
 **Code:** [github.com/michailmitsakis/catalyst-kg-agent](https://github.com/michailmitsakis/catalyst-kg-agent) · **Status:** working demo
+
+{% include figure.liquid loading="eager" path="assets/img/projects/diagram-catalyst-kg-agent.svg" alt="Retrieve candidates from the knowledge graph, predict with MACE, gate expensive steps" class="img-fluid rounded z-depth-1" %}
 
 Self-driving labs face the same decision at every step: given a target property and a limited budget, should the next move be a cheap database lookup, a fast machine-learned surrogate estimate, or an expensive high-fidelity experiment? Get it wrong and the budget goes on redundant expensive steps, or an unreliable surrogate result gets trusted without a check.
 

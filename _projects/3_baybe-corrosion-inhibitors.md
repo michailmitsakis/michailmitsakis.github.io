@@ -2,7 +2,7 @@
 layout: page
 title: BayBE one more time
 description: Hackathon project (3rd place) — Bayesian optimisation with BayBE to screen small-molecule corrosion inhibitors for aluminium alloys, including transfer learning between alloys.
-img: assets/img/projects/baybe-featurization-aa2024.png
+img: aassets/img/projects/diagram-baybe-corrosion-inhibitors.svg
 importance: 3
 category: work
 github: https://github.com/michailmitsakis/baybe_project-surface-science-syndicate
@@ -10,6 +10,8 @@ permalink: /projects/baybe-corrosion-inhibitors/
 ---
 
 **Code:** [GitHub](https://github.com/michailmitsakis/baybe_project-surface-science-syndicate) · **Video:** [YouTube](https://youtu.be/kIRxGdwmLSY) · **Event:** [Bayesian Optimization Hackathon for Chemistry and Materials](https://doi.org/10.26434/chemrxiv-2025-dzh5z) (Acceleration Consortium × Merck KGaA, March 2024) · **Team:** Surface Science Syndicate
+
+{% include figure.liquid loading="eager" path="assets/img/projects/diagram-baybe-corrosion-inhibitors.svg" alt="Encode each molecule, propose the next experiment, measure inhibition on the alloy" class="img-fluid rounded z-depth-1" %}
 
 Finding a good corrosion inhibitor means testing many candidate molecules across many conditions, and each test is a real electrochemical experiment. We asked how much of that screening Bayesian optimisation can save. We used [BayBE](https://github.com/emdgroup/baybe), Merck's open-source Bayesian optimisation library, on a published database of electrochemical responses of small organic molecules on aluminium and five aluminium alloys (AA1000, AA2024, AA5000, AA6000, AA7075).
 

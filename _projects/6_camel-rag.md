@@ -11,7 +11,7 @@ permalink: /projects/camel-rag/
 
 **Code:** [GitHub](https://github.com/michailmitsakis/CaMEL-RAG) · **Event:** [2025 LLM Hackathon for Applications in Materials Science & Chemistry](https://arxiv.org/abs/2605.03205) · **Team:** Code4Catalysis-KFUPM (Montassar Bouzidi, Nur Allif Fathurrahman, A. B. M. Ashikur Rahman, Tasnim Ahmed, Michail Mitsakis)
 
-<!-- TODO: one line on your own part in the team. -->
+{% include figure.liquid loading="eager" path="assets/img/projects/diagram-camel-rag.svg" alt="Retrieve Open Catalyst records, answer with citations, check against DFT" class="img-fluid rounded z-depth-1" %}
 
 Catalyst-screening datasets such as Open Catalyst hold millions of DFT results, but a researcher can't simply ask them a question. Our idea for the hackathon was a natural-language front end: ask about an adsorbate on a surface and get back a number traceable to the underlying calculation, rather than a fluent guess.
 

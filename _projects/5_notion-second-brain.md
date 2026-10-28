@@ -11,6 +11,8 @@ permalink: /projects/notion-second-brain/
 
 **Code:** [github.com/michailmitsakis/notion-second-brain](https://github.com/michailmitsakis/notion-second-brain)
 
+{% include figure.liquid loading="eager" path="assets/img/projects/diagram-notion-second-brain.svg" alt="Hybrid retrieval, reranking and rubric evaluation, all on one machine" class="img-fluid rounded z-depth-1" %}
+
 I keep my notes and research in Notion. I wanted to summarize and query them without sending them to a cloud API, so I built a complete retrieval-augmented generation stack that runs entirely on one machine.
 
 <div class="row">
