@@ -2,6 +2,8 @@
 layout: page
 title: catalyst-kg-agent
 description: Knowledge-graph-grounded, cost-aware multi-agent system for choosing the cheapest sufficient next step in a materials-discovery campaign.
+status: "working demo"
+result: "MACE MAE 0.114 eV/atom on non-oxides"
 img: assets/img/projects/diagram-catalyst-kg-agent.svg
 importance: 1
 category: work

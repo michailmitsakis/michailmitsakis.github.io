@@ -2,6 +2,8 @@
 layout: page
 title: MSc Thesis
 description: Machine learning-driven optimization of electrodeposited Ni-W electrocatalysts for H2 evolution in alkaline electrolysis cells
+status: "MSc thesis · 2023"
+result: "NiW beat Ni foam via surface area, not intrinsic activity"
 img: assets/img/projects/diagram-msc-thesis.svg
 importance: 2
 category: work

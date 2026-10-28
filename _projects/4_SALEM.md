@@ -1,7 +1,9 @@
 ---
 layout: page
 title: SALEM
-description: Hackathon project — self-improving agentic loops that score LLM-extracted literature features against a measured property, here the PL peak of hybrid perovskites.
+description: Self-improving agentic loops that score LLM-extracted literature features against a measured property, here the PL peak of hybrid perovskites.
+status: "OSI hackathon · 2026"
+result: "one question: error 98.5 → 86.9 nm"
 img: assets/img/projects/diagram-salem.svg
 importance: 4
 category: work

@@ -2,6 +2,8 @@
 layout: page
 title: notion-second-brain
 description: A fully local RAG agent over a Notion workspace — hybrid retrieval, reranking, persistent memory, and an evaluation harness.
+status: "working tool"
+result: "fully local, Notion personal assistant agent"
 img: assets/img/projects/diagram-notion-second-brain.svg
 importance: 5
 category: work

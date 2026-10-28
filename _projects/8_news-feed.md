@@ -1,7 +1,9 @@
 ---
 layout: page
 title: news-feed
-description: A scheduled news feed for relevant news sources to EU project consulting work.
+description: A scheduled feed that collects, scores and summarises energy and maritime business news into a Notion database.
+status: "tool in use"
+result: "20+ sources into one Notion database"
 importance: 8
 img: assets/img/projects/diagram-news-feed.svg
 category: consulting tools

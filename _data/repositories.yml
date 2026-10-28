@@ -4,6 +4,7 @@
 repo_description_lines_max: 2
 
 github_repos:
+  - michailmitsakis/kg_osi_26
   - michailmitsakis/catalyst-kg-agent
   - michailmitsakis/notion-second-brain
   - michailmitsakis/baybe_project-surface-science-syndicate
@@ -11,3 +12,4 @@ github_repos:
   # - michailmitsakis/wmg_tender_feed
   # - michailmitsakis/wmg_news_feed
   - michailmitsakis/Ax_bayes_opt_NiW
+  
