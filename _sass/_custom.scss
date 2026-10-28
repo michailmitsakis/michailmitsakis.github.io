@@ -161,6 +161,15 @@ article li {
   }
 }
 
+// No second line when a page opens with a section heading (repositories page),
+// or when a --- rule already sits above the heading.
+.post > article > h2:first-child,
+.post > article > hr + h2 {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+}
+
 // About page: the gem writes these headings in lower case ("selected publications").
 .post > article:has(> .clearfix) > h2 {
   text-transform: capitalize;
