@@ -5,6 +5,11 @@ date: 2026-10-15 10:00:00+0300
 description: What I measured as ‘electrochemically active surface area’ in my MSc thesis, and why the area you divide by can change the story a catalyst tells.
 tags: electrochemistry electrocatalysis hydrogen EIS bayesian-optimization
 categories: technical
+level: intermediate
+takeaways:
+  - Every activity metric in electrocatalysis is a current divided by an area. Pick a different area and you can reach a different conclusion if you're not careful.
+  - The textbook shortcut for the ECSA gives an *apparent* area, resting on several assumptions.
+  - That doesn't make it useless, but one does need to measure it carefully, and read it as a diagnostic rather than a ranking between catalysts.
 giscus_comments: false
 related_posts: false
 toc:
@@ -14,13 +19,6 @@ thumbnail: assets/img/posts/ecsa/eis-nyquist-primer.png
 ---
 
 Electrochemistry is complicated. It gets more complicated the deeper you get into it. The more you learn, the more it feels like there is a massive iceberg of details hidden from view. As with all disciplines, you hopefully reach a point where you come closer to knowing how much you don't know. This post is about one tip of that iceberg: the **electrochemically active surface area (ECSA)**. In my MSc thesis at DTU I measured it, divided by it, and built my main conclusion on it. Three years on, I understand much better what that single number represents. Below: what I did, how a new study used the same idea, what a recent perspective paper says is hiding underneath, and what I'd do differently now.
-
-> **TL;DR**
->
-> - Every activity metric in electrocatalysis is a current divided by an area. Pick a different area and you can reach a different conclusion if you're not careful.
-> - The textbook shortcut for the ECSA gives an *apparent* area, resting on several assumptions.
-> - That doesn't make it useless, but one does need to measure it carefully, and read it as a diagnostic rather than a ranking between catalysts.
-{: .block-tip }
 
 ## Why the denominator matters
 

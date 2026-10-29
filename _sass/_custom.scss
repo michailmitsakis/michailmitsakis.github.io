@@ -455,7 +455,7 @@ footer.fixed-bottom {
   }
 
   .project-event {
-    margin-left: auto;
+    flex-basis: 100%;
     font-family: var(--font-mono);
     font-size: 0.75rem;
     letter-spacing: 0.04em;
@@ -515,14 +515,6 @@ footer.fixed-bottom {
     color: var(--global-text-color);
   }
 }
-
-@media (max-width: 575.98px) {
-  .project-meta .project-event {
-    flex-basis: 100%;
-    margin-left: 0;
-  }
-}
-
 
 /* ---------------------------------------------------------------------------
  * CV page
@@ -596,5 +588,294 @@ footer.fixed-bottom {
     margin-top: 0;
     padding-top: 0;
     border-top: 0;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+ * About page: research map, and section headings without numbers
+ * ------------------------------------------------------------------------- */
+
+// The About page's own headings (latest posts, latest publications) keep the
+// hairline but not the "01" counter used on project pages.
+.post > article:has(> .clearfix) > h2::before {
+  content: none;
+}
+
+.research-map {
+  margin: 1.25rem 0 2rem;
+
+  svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .rm-stage {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    fill: var(--global-text-color-light);
+  }
+
+  .rm-num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    fill: var(--global-theme-color);
+  }
+
+  .rm-grid {
+    stroke: var(--global-divider-color);
+    stroke-dasharray: 3 5;
+  }
+
+  .rm-bar {
+    fill: var(--site-accent-soft);
+    stroke: var(--global-theme-color);
+    stroke-width: 1.2;
+  }
+
+  .rm-sim {
+    fill: none;
+    stroke: var(--global-theme-color);
+    stroke-width: 1.2;
+    stroke-dasharray: 4 4;
+  }
+
+  .rm-real {
+    fill: var(--global-theme-color);
+  }
+
+  .rm-label {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 500;
+    fill: var(--global-text-color);
+  }
+
+  .rm-label-real {
+    fill: var(--global-bg-color);
+  }
+
+  .rm-small {
+    font-family: var(--font-mono);
+    font-size: 11px;
+  }
+
+  .rm-note {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    fill: var(--global-text-color-light);
+  }
+
+  a:hover .rm-bar {
+    fill: var(--global-theme-color);
+    fill-opacity: 0.3;
+  }
+
+  // Phones get a plain list instead of the wide figure.
+  .research-map-list {
+    display: none;
+    margin: 0 0 1rem;
+    padding: 0;
+    list-style: none;
+
+    li {
+      display: flex;
+      flex-direction: column;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--global-divider-color);
+    }
+
+    span {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--global-text-color-light);
+    }
+  }
+
+  .research-map-caption {
+    margin: 0.5rem 0 0;
+    font-size: 0.85rem;
+    color: var(--global-text-color-light);
+  }
+}
+
+@media (max-width: 575.98px) {
+  .research-map {
+    svg {
+      display: none;
+    }
+
+    .research-map-list {
+      display: block;
+    }
+  }
+}
+
+/* ---------------------------------------------------------------------------
+ * Blog posts (_layouts/post.liquid): series label, reading time and level,
+ * "Save as PDF", the takeaways box, and callouts in the site's colours
+ * ------------------------------------------------------------------------- */
+
+.post-header .post-series {
+  margin-bottom: 0.6rem;
+}
+
+.post-pdf {
+  margin-left: 0.4rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: var(--global-theme-color);
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.takeaways {
+  margin: 0 0 2rem;
+  padding: 1.1rem 1.35rem 0.6rem;
+  border: 1px solid var(--global-divider-color);
+  border-left: 3px solid var(--global-theme-color);
+  border-radius: 8px;
+  background: var(--global-card-bg-color);
+
+  ul {
+    margin: 0;
+    padding-left: 1.1rem;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+  }
+}
+
+// Callouts: > text, then {: .block-tip }, {: .block-warning } or {: .block-danger }
+// on the next line. The colours below replace al-folio's defaults.
+:root {
+  --global-tip-block: #0b6b61;
+  --global-tip-block-bg: #e3efeb;
+  --global-tip-block-text: #1c1b18;
+  --global-tip-block-title: #0b6b61;
+  --global-warning-block: #a86400;
+  --global-warning-block-bg: #f6ecda;
+  --global-warning-block-text: #1c1b18;
+  --global-warning-block-title: #8a5200;
+  --global-danger-block: #b3261e;
+  --global-danger-block-bg: #f6e2df;
+  --global-danger-block-text: #1c1b18;
+  --global-danger-block-title: #8c1d18;
+}
+
+html[data-theme="dark"] {
+  --global-tip-block: #5fd4c2;
+  --global-tip-block-bg: #15302c;
+  --global-tip-block-text: #e8e5de;
+  --global-tip-block-title: #5fd4c2;
+  --global-warning-block: #e0a84f;
+  --global-warning-block-bg: #2c2416;
+  --global-warning-block-text: #e8e5de;
+  --global-warning-block-title: #e0a84f;
+  --global-danger-block: #f08a80;
+  --global-danger-block-bg: #321b1b;
+  --global-danger-block-text: #e8e5de;
+  --global-danger-block-title: #f08a80;
+}
+
+blockquote {
+  padding: 0.9rem 1.2rem;
+  border-left-width: 3px;
+  border-radius: 0 8px 8px 0;
+  font-size: 1rem;
+}
+
+.print-source {
+  display: none;
+}
+
+/* ---------------------------------------------------------------------------
+ * Printing / "Save as PDF": light colours, no navigation, figures kept whole
+ * ------------------------------------------------------------------------- */
+
+@media print {
+  html,
+  html[data-theme="dark"] {
+    --global-bg-color: #ffffff;
+    --global-card-bg-color: #ffffff;
+    --global-code-bg-color: #f3f1ec;
+    --global-text-color: #1c1b18;
+    --global-text-color-light: #4a4740;
+    --global-theme-color: #0b6b61;
+    --global-divider-color: #d9d4c8;
+    --site-accent-soft: #e3efeb;
+    --site-chip: #f0ece3;
+    --global-tip-block-bg: #eef5f2;
+    --global-tip-block-text: #1c1b18;
+    --global-warning-block-bg: #faf3e6;
+    --global-warning-block-text: #1c1b18;
+    --global-danger-block-bg: #faecea;
+    --global-danger-block-text: #1c1b18;
+  }
+
+  body {
+    padding: 0 !important;
+    font-size: 11pt;
+  }
+
+  header .navbar,
+  footer,
+  #toc-sidebar,
+  .post-pdf,
+  progress,
+  #progress,
+  #back-to-top,
+  .related-posts,
+  #giscus_thread {
+    display: none !important;
+  }
+
+  .row:has(#toc-sidebar) > .col-sm-3 {
+    display: none !important;
+  }
+
+  .row:has(#toc-sidebar) > .col-sm-9 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .container {
+    max-width: 100% !important;
+    margin-top: 0 !important;
+  }
+
+  figure,
+  img,
+  table,
+  pre,
+  blockquote,
+  .takeaways {
+    break-inside: avoid;
+  }
+
+  h2,
+  h3 {
+    break-after: avoid;
+  }
+
+  a {
+    color: var(--global-theme-color) !important;
+  }
+
+  .print-source {
+    display: block;
+    margin-top: 2rem;
+    padding-top: 0.6rem;
+    border-top: 1px solid var(--global-divider-color);
+    font-family: var(--font-mono);
+    font-size: 8pt;
+    color: var(--global-text-color-light);
   }
 }

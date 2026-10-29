@@ -1,0 +1,66 @@
+{% comment %}
+  Research map for the About page: where each project sits on the pipeline.
+  Each project appears twice: as a bar in the SVG (wide screens) and as a line in the
+  list (phones). Edit both together. Bars span stage columns; x = 16 + 172 * stage.
+{% endcomment %}
+<div class="research-map">
+<svg viewBox="0 0 880 300" role="img" aria-label="Research map: where each project sits on the pipeline from literature and data to experiment">
+<text class="rm-num" x="96" y="18" text-anchor="middle">01</text>
+<text class="rm-stage" x="96" y="36" text-anchor="middle">LITERATURE &amp; DATA</text>
+<line class="rm-grid" x1="96" y1="48" x2="96" y2="290" />
+<text class="rm-num" x="182" y="36" text-anchor="middle">→</text>
+<text class="rm-num" x="268" y="18" text-anchor="middle">02</text>
+<text class="rm-stage" x="268" y="36" text-anchor="middle">RETRIEVAL / KG</text>
+<line class="rm-grid" x1="268" y1="48" x2="268" y2="290" />
+<text class="rm-num" x="354" y="36" text-anchor="middle">→</text>
+<text class="rm-num" x="440" y="18" text-anchor="middle">03</text>
+<text class="rm-stage" x="440" y="36" text-anchor="middle">SURROGATE / GP</text>
+<line class="rm-grid" x1="440" y1="48" x2="440" y2="290" />
+<text class="rm-num" x="526" y="36" text-anchor="middle">→</text>
+<text class="rm-num" x="612" y="18" text-anchor="middle">04</text>
+<text class="rm-stage" x="612" y="36" text-anchor="middle">BO / DECISION</text>
+<line class="rm-grid" x1="612" y1="48" x2="612" y2="290" />
+<text class="rm-num" x="698" y="36" text-anchor="middle">→</text>
+<text class="rm-num" x="784" y="18" text-anchor="middle">05</text>
+<text class="rm-stage" x="784" y="36" text-anchor="middle">EXPERIMENT</text>
+<line class="rm-grid" x1="784" y1="48" x2="784" y2="290" />
+<a href="{{ '/projects/camel-rag/' | relative_url }}">
+<rect class="rm-bar" x="16" y="58" width="332" height="26" rx="6" />
+<text class="rm-label" x="28" y="75.5">CaMEL-RAG</text>
+</a>
+<a href="{{ '/projects/notion-second-brain/' | relative_url }}">
+<rect class="rm-bar" x="16" y="96" width="332" height="26" rx="6" />
+<text class="rm-label" x="28" y="113.5">notion-second-brain</text>
+</a>
+<a href="{{ '/projects/salem/' | relative_url }}">
+<rect class="rm-bar" x="16" y="134" width="504" height="26" rx="6" />
+<text class="rm-label" x="28" y="151.5">SALEM</text>
+</a>
+<a href="{{ '/projects/catalyst-kg-agent/' | relative_url }}">
+<rect class="rm-bar" x="188" y="172" width="504" height="26" rx="6" />
+<text class="rm-label" x="200" y="189.5">catalyst-kg-agent</text>
+</a>
+<rect class="rm-sim" x="696" y="172" width="168" height="26" rx="6" />
+<text class="rm-note" x="780" y="188.5" text-anchor="middle">simulated</text>
+<a href="{{ '/projects/baybe-corrosion-inhibitors/' | relative_url }}">
+<rect class="rm-bar" x="360" y="210" width="332" height="26" rx="6" />
+<text class="rm-label" x="372" y="227.5">BayBE corrosion inhibitors</text>
+</a>
+<rect class="rm-sim" x="696" y="210" width="168" height="26" rx="6" />
+<text class="rm-note" x="780" y="226.5" text-anchor="middle">simulated</text>
+<a href="{{ '/projects/msc-thesis/' | relative_url }}">
+<rect class="rm-real" x="360" y="248" width="504" height="26" rx="6" />
+<text class="rm-label rm-label-real" x="372" y="265.5">MSc thesis</text>
+<text class="rm-label rm-label-real rm-small" x="852" y="265.5" text-anchor="end">real lab ↺</text>
+</a>
+</svg>
+<ul class="research-map-list">
+<li><a href="{{ '/projects/camel-rag/' | relative_url }}">CaMEL-RAG</a><span>literature &amp; data → retrieval / KG</span></li>
+<li><a href="{{ '/projects/notion-second-brain/' | relative_url }}">notion-second-brain</a><span>literature &amp; data → retrieval / KG</span></li>
+<li><a href="{{ '/projects/salem/' | relative_url }}">SALEM</a><span>literature &amp; data → surrogate / GP</span></li>
+<li><a href="{{ '/projects/catalyst-kg-agent/' | relative_url }}">catalyst-kg-agent</a><span>retrieval / KG → BO / decision (experiment simulated)</span></li>
+<li><a href="{{ '/projects/baybe-corrosion-inhibitors/' | relative_url }}">BayBE corrosion inhibitors</a><span>surrogate / GP → BO / decision (experiment simulated)</span></li>
+<li><a href="{{ '/projects/msc-thesis/' | relative_url }}">MSc thesis</a><span>surrogate / GP → experiment (real lab)</span></li>
+</ul>
+<p class="research-map-caption">Where each project sits on the pipeline I keep coming back to. Only the MSc thesis closes the loop with real lab experiments; the hackathon and side projects stop at data or simulate the last step.</p>
+</div>

@@ -12,7 +12,7 @@ profile:
     <p>MSc Engineering - Physics & Nanotechnology</p>
     <p>BSc Physics - Materials Science</p>
 
-selected_papers: true # turn on once _bibliography/papers.bib has entries marked selected={true}
+selected_papers: false # true shows the 3 newest entries of papers.bib as "latest publications"
 social: true # includes social icons at the bottom of the page
 
 announcements:
@@ -40,12 +40,14 @@ Today, I work at a business and engineering consultancy on **deep-tech and EU-fu
 
 Alongside that, in my free time I have been diving deeper into the latest research in **AI applications for materials discovery and optimization**, such as self-driving labs (SDLs), machine-learning interatomic potentials (MLIPs), advanced BO & LLM use, and more, while participating in hackathons and prototyping certain apps to further advance my understanding of the field. 
 
+{% include research_map.liquid %}
+
 - **[SALEM](/projects/salem/)** — a self-improving agentic loop that scores LLM-extracted literature features by how well a Gaussian process predicts a measured property from them (here the PL peak of hybrid perovskites), then rewrites its extraction questions and database queries to lower that error
 - **[catalyst-kg-agent](/projects/catalyst-kg-agent/)** — a knowledge-graph-grounded, cost-aware multi-agent system that decides when a cheap database lookup is enough and when an expensive simulation is justified, within a simulated SDL-like automated workflow; built to understand the complexities involved in automated discovery
 - **[notion-second-brain](/projects/notion-second-brain/)** — a fully local RAG agent with hybrid retrieval, reranking, and an evaluation harness; for talking to my Notion notes offline
 - **[baybe-corrosion-inhibitors](/projects/baybe-corrosion-inhibitors/)** — Bayesian optimisation with BayBE to screen small-molecule corrosion inhibitors for aluminium alloys, comparing molecular encodings against random search and testing transfer learning between alloys; a hackathon project exploring how far BO can cut the number of real experiments
 
-One lesson I have found that holds along all these projects: it's important to do the upfront work on **uncertainty awareness** and **reproducibility** first, before optimizing and diving into the experimental workflow. Electrochemical experiments especially are notoriously difficult to replicate due to the field's heavy reliance on customized apparatus, inconsistent reporting parameters, and high sensitivity to minor variations in experimental conditions. For example, the thesis data showed large systematic errors in temperature, so when I rebuilt the loop in Ax I replaced it with pH to avoid confusing the optimizer. I have tried to bring the same habit to my AI tools by building my projects around simplicity, validation and evaluation as the main throughlines.
+One lesson I've found that holds along all these projects: it's important to do the upfront work on **uncertainty awareness** and **reproducibility** first, before optimizing and diving into the experimental workflow. Electrochemical experiments especially are notoriously difficult to replicate due to the field's heavy reliance on customized apparatus, inconsistent reporting parameters, and high sensitivity to minor variations in experimental conditions. For example, the thesis data showed large systematic errors in temperature, so when I rebuilt the loop in Ax I replaced it with pH to avoid confusing the optimizer. I have tried to bring the same habit to my AI tools by building my projects around simplicity, validation and evaluation as the main throughlines.
 
 **Some more stuff I'm interested in:** 
 
