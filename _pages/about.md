@@ -53,6 +53,6 @@ One lesson I've found that holds along all these projects: it's important to do 
 
 Calisthenics · Gaming · Reading (fantasy, sci-fi, philosophy, mythology, history) · Writing · Philosophy of mind & Ontologies of quantum mechanics · Music (rock, punk, psychedelic, funk, jazz, blues, indie) · Strolls in nature 
 
-At the moment, I'm looking for **an industry-aligned PhD or an applied/research roles in AI for materials science and manufacturing**. You can find takeaways from my readings, research and [projects](/projects/) in [writing](/blog/).
+At the moment, I'm exploring **industry-aligned PhDs or applied/research roles in AI for materials science and manufacturing**. You can find takeaways from my readings, research and [projects](/projects/) in [writing](/blog/).
 
 I love hearing from people, so please reach out via email or LinkedIn!
