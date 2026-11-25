@@ -19,6 +19,9 @@ team: Sven Voigt, Defne Circi, Xiaoquan Liu, Mohd Zaki, Zhanzhao Li, Eltjo Mante
 
 **SALEM** (**S**elf-improving **A**gentic **L**oops: LLM-**E**xtracted features for **M**aterials Property Prediction) gives literature-mining AI agents a way to check their own work. A Gaussian process (GP) predicts a trusted measured property, here the photoluminescence (PL) peak of hybrid perovskites, from what the agent extracts. The agent then keeps rewriting its questions and database queries to lower that prediction error, in a self-improving loop.
 
+- [**Video explainer**](https://www.youtube.com/watch?v=qoN32FKbgXc)
+- **HuggingFace demos**: [GP conditioning](https://huggingface.co/spaces/svenpvoigt/KG-GP-Condition_OSI) and [embedding](https://huggingface.co/spaces/svenpvoigt/KG-GP-Embed).
+
 ## Extraction without ground truth
 {: data-kicker="the problem"}
 
